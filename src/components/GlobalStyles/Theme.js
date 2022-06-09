@@ -5,6 +5,8 @@ const theme = {
         text: "#2E2E2E",
         text2: "#5B5353",
         white: "#eee",
+        backgroundSide: "#efeef0",
+        handle : "#9d9c9f"
     },
 };
 
