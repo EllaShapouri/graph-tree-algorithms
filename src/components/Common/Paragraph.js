@@ -5,5 +5,7 @@ export const Paragraph = styled.p`
     color: ${({ theme }) => theme.colors.text2};
     margin: 0;
     line-height: 1.5em;
-    text-align: center;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
 `;
