@@ -6,6 +6,7 @@ export const StyledButton = styled.button`
     outline: 0;
     font-size: 1em;
     font-weight: 700;
+    width: 100%;
     color: ${({ theme }) => theme.colors.white};
     padding: 1em 1.5em;
     cursor: pointer;
