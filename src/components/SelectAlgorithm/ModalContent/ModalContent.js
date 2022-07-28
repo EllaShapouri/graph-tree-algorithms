@@ -1,4 +1,11 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import {
+    setSelectedAlgorithm,
+    setSelectedDataStructure,
+} from "../../../Redux/dataSlice";
 import Button from "../../Button/Button";
 import { Gradientbox } from "../../Common/Gradientbox";
 import { Title } from "../../Common/Title";
@@ -9,25 +16,37 @@ import {
     Option,
     RadioWrapper,
     Select,
-    FormButtonWrapper
+    FormButtonWrapper,
 } from "./ModalContent.styled";
 
-const ModalContent = () => {
+const ModalContent = (props) => {
+    console.log("props", props);
 
-    const [dataStructure,setDataStructure] = useState("graph");
-    const [algorithm,setAlgorithm] = useState("BFS");
-    
+    const [dataStructure, setDataStructure] = useState("graph");
+    const [algorithm, setAlgorithm] = useState("BFS");
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const dataModal = (e) => {
         e.preventDefault();
-        console.log(dataStructure);
-        console.log(algorithm);
-    }
+        // store in redux
+        dispatch(setSelectedAlgorithm(algorithm));
+        dispatch(setSelectedDataStructure(dataStructure));
+        navigate("/getflow");
+    };
 
     return (
         <Form onSubmit={dataModal}>
             <Title>Algorithm :</Title>
-            <Select name="algorithm" value={algorithm} onChange={(e) => setAlgorithm(e.target.value)}>
-                <Option value="BFS" defaultValue>Breadth First Search - BFS</Option>
+            <Select
+                name="algorithm"
+                value={algorithm}
+                onChange={(e) => setAlgorithm(e.target.value)}
+            >
+                <Option value="BFS" defaultValue>
+                    Breadth First Search - BFS
+                </Option>
                 <Option value="RBFS">RBFS</Option>
                 <Option value="UCS">Uniform Cost Search - UCS</Option>
                 <Option value="DFS">Depth-first Search</Option>
