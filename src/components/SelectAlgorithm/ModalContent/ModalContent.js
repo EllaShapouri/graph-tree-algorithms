@@ -19,9 +19,7 @@ import {
     FormButtonWrapper,
 } from "./ModalContent.styled";
 
-const ModalContent = (props) => {
-    console.log("props", props);
-
+const ModalContent = () => {
     const [dataStructure, setDataStructure] = useState("graph");
     const [algorithm, setAlgorithm] = useState("BFS");
 
