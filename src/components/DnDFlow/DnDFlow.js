@@ -12,22 +12,30 @@ import ReactFlow, {
 import Sidebar from "../Sidebar/Sidebar";
 import { setChangeElement, setSelectedElement } from "../../Redux/mainSlice";
 import { DnDFlowStyled, DnDWrapper, FlowWrapper } from "./DnDFlow.styled";
+import { useNavigate } from "react-router-dom";
 
-const initialNodes = [];
-
-let id = 0;
+let id = 1;
 const getId = () => `node_${id++}`;
 
 const DnDFlow = () => {
     const reactFlowWrapper = useRef(null);
 
-    const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+    const selectedElement = useSelector((state) => state.flow.selectedElement);
+    const changeElement = useSelector((state) => state.flow.changeElement);
+    const algorithm = useSelector((state) => state.data.algorithm);
+    const dataStructure = useSelector((state) => state.data.dataStructure);
+    const initialNode = useSelector((state) => state.data.initialNode);
+    const dispatch = useDispatch();
+
+    const navigate = useNavigate();
+
+    const [nodes, setNodes, onNodesChange] = useNodesState(initialNode);
     const [edges, setEdges, onEdgesChange] = useEdgesState([]);
     const [reactFlowInstance, setReactFlowInstance] = useState(null);
 
-    const selectedElement = useSelector((state) => state.flow.selectedElement);
-    const changeElement = useSelector((state) => state.flow.changeElement);
-    const dispatch = useDispatch();
+    useEffect(() => {
+        if (!algorithm && !dataStructure) navigate("/");
+    }, []);
 
     const onNodeClick = (event, node) => {
         dispatch(setSelectedElement(node));

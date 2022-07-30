@@ -21,7 +21,7 @@ export const DnDFlowStyled = styled.div`
         stroke: ${({ theme }) => theme.colors.secondary};
     }
 
-    .react-flow__node-default {
+    .react-flow__node {
         font-size: 0.6em;
         background: transparent;
         border: 0.1em solid ${({ theme }) => theme.colors.text2};
@@ -39,11 +39,15 @@ export const DnDFlowStyled = styled.div`
         }
     }
 
+    .react-flow__node.StartNode {
+        background-color: ${({ theme }) => theme.colors.startNode} !important;
+    }
+
     .react-flow__edge-textbg {
         cursor: pointer;
     }
 
-    .react-flow__node-default.selected {
+    .react-flow__node.selected {
         border: 1px solid ${({ theme }) => theme.colors.primary} !important;
         box-shadow: 0 0 0 0;
         .react-flow__handle {
@@ -51,7 +55,7 @@ export const DnDFlowStyled = styled.div`
         }
     }
 
-    .react-flow__node-default.selectable:hover {
+    .react-flow__node.selectable:hover {
         border: 1px solid ${({ theme }) => theme.colors.primary} !important;
         .react-flow__handle {
             background: ${({ theme }) => theme.colors.primary} !important;

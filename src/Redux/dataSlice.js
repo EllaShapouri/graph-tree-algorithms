@@ -5,6 +5,7 @@ export const dataSlice = createSlice({
     initialState: {
         dataStructure: "",
         algorithm: "",
+        initialNode: [],
     },
     reducers: {
         setSelectedAlgorithm: (state, action) => {
@@ -13,11 +14,35 @@ export const dataSlice = createSlice({
 
         setSelectedDataStructure: (state, action) => {
             state.dataStructure = action.payload;
+            if (action.payload === "tree") {
+                state.initialNode = [
+                    {
+                        id: "node_0",
+                        type: "input",
+                        data: { label: "root node", startNode: true },
+                        className: "StartNode",
+                        position: { x: 250, y: 5 },
+                    },
+                ];
+            } else if (action.payload === "graph") {
+                state.initialNode = [
+                    {
+                        id: "node_0",
+                        type: "default",
+                        data: { label: "start node", startNode: true },
+                        className: "StartNode",
+                        position: { x: 250, y: 5 },
+                    },
+                ];
+            } else {
+                state.initialNode = [];
+            }
         },
     },
 });
 
 // Action creators are generated for each case reducer function
-export const { setSelectedAlgorithm, setSelectedDataStructure } = dataSlice.actions;
+export const { setSelectedAlgorithm, setSelectedDataStructure } =
+    dataSlice.actions;
 
 export default dataSlice.reducer;
