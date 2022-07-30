@@ -14,9 +14,6 @@ import { setChangeElement, setSelectedElement } from "../../Redux/mainSlice";
 import { DnDFlowStyled, DnDWrapper, FlowWrapper } from "./DnDFlow.styled";
 import { useNavigate } from "react-router-dom";
 
-let id = 1;
-const getId = () => `node_${id++}`;
-
 const DnDFlow = () => {
     const reactFlowWrapper = useRef(null);
 
@@ -77,14 +74,22 @@ const DnDFlow = () => {
         } else return;
     }, [changeElement, setNodes, setEdges, selectedElement]);
 
-    const onConnect = (params) =>
+    const onConnect = (params) => {
         setEdges((eds) => {
             eds.map((edge) => (edge.selected = false));
-            const id = `edge_${edges.length + 1}`;
+            let newEds = [];
+            // each node has just one parent in tree
+            if (dataStructure === "tree") {
+                newEds = eds.filter((edge) => params.target !== edge.target);
+            } else {
+                newEds = eds;
+            }
+            const id = `edge_${newEds.length + 1}`;
             const edge = { ...params, id, selected: true };
             dispatch(setSelectedElement(edge));
-            return addEdge(edge, eds);
+            return addEdge(edge, newEds);
         });
+    };
 
     const onDragOver = useCallback((event) => {
         event.preventDefault();
@@ -105,12 +110,14 @@ const DnDFlow = () => {
                 x: event.clientX - reactFlowBounds.left,
                 y: event.clientY - reactFlowBounds.top,
             });
+            const nodesLength = nodes.length;
             const newNode = {
-                id: getId(),
+                id: `node_${nodesLength}`,
                 type: "default",
                 position,
                 data: { label: `${type} node` },
             };
+
             setNodes((nds) => {
                 nds.map((node) => {
                     node.selected = false;
@@ -119,7 +126,7 @@ const DnDFlow = () => {
             });
             dispatch(setSelectedElement(newNode));
         },
-        [reactFlowInstance]
+        [reactFlowInstance, nodes]
     );
 
     const onPaneClick = () => {
