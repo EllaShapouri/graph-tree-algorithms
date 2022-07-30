@@ -51,4 +51,5 @@ export const SetButton = styled.button`
     border-radius: 0.3em;
     width: 10em;
     margin: auto;
+    cursor: pointer;
 `;

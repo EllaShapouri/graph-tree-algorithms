@@ -8,21 +8,27 @@ import {
     setChangeElement,
     setSelectedElement,
 } from "../../../../Redux/mainSlice";
+import ErrorText from "../../../Common/ErrorText";
 
 const LabelForm = ({ placeholder, label }) => {
     const [value, setValue] = useState("");
+    const [emptyError, setEmptyError] = useState(false);
     const input = useRef(null);
     const selectedElement = useSelector((state) => state.flow.selectedElement);
     const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const element = { ...selectedElement };
-        element.data = { label: value };
-        dispatch(setSelectedElement(element));
-        dispatch(setChangeElement(true));
-        console.log("sele", selectedElement);
-        setValue("");
+        if (!value.trim()) {
+            setEmptyError(true);
+        } else {
+            setEmptyError(false);
+            const element = { ...selectedElement };
+            element.data = { label: value };
+            dispatch(setSelectedElement(element));
+            dispatch(setChangeElement(true));
+            setValue("");
+        }
     };
 
     useEffect(() => {
@@ -41,6 +47,7 @@ const LabelForm = ({ placeholder, label }) => {
                 value={value}
                 ref={input}
             />
+            {emptyError ? <ErrorText width="10em">Empty!!</ErrorText> : null}
             <SetButton type="submit" onClick={handleSubmit}>
                 set
             </SetButton>
