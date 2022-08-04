@@ -6,14 +6,14 @@ export const mainSlice = createSlice({
         edges: [],
         nodes: [],
         selectedElement: {},
-        changeElement : false
+        changeElement: false,
     },
     reducers: {
-        setEdges: (state, action) => {
+        setAllEdges: (state, action) => {
             state.edges = action.payload;
         },
 
-        setNodes: (state, action) => {
+        setAllNodes: (state, action) => {
             state.nodes = action.payload;
         },
 
@@ -24,12 +24,15 @@ export const mainSlice = createSlice({
         setChangeElement: (state, action) => {
             state.changeElement = action.payload;
         },
-        
     },
 });
 
 // Action creators are generated for each case reducer function
-export const { setSelectedElement,setChangeElement, setEdges, setNodes } =
-    mainSlice.actions;
+export const {
+    setSelectedElement,
+    setChangeElement,
+    setAllEdges,
+    setAllNodes,
+} = mainSlice.actions;
 
 export default mainSlice.reducer;

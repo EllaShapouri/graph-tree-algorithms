@@ -16,7 +16,6 @@ import { useNavigate } from "react-router-dom";
 
 const DnDFlow = () => {
     const reactFlowWrapper = useRef(null);
-
     const selectedElement = useSelector((state) => state.flow.selectedElement);
     const changeElement = useSelector((state) => state.flow.changeElement);
     const algorithm = useSelector((state) => state.data.algorithm);
@@ -31,7 +30,7 @@ const DnDFlow = () => {
     const [reactFlowInstance, setReactFlowInstance] = useState(null);
 
     useEffect(() => {
-        if (!algorithm && !dataStructure) navigate("/");
+        if (!algorithm || !dataStructure) navigate("/");
     }, []);
 
     const onNodeClick = (event, node) => {
@@ -45,10 +44,8 @@ const DnDFlow = () => {
         if (changeElement && selectedElement.id) {
             const elementId = selectedElement.id;
             const elementLabel = selectedElement.data.label;
-            console.log("nodesa", nodes);
             if (selectedElement.id.includes("node")) {
                 setNodes((nds) => {
-                    console.log("nds", nds);
                     return nds.map((node) => {
                         if (node.id === elementId) {
                             node.data = {
@@ -72,7 +69,7 @@ const DnDFlow = () => {
                 dispatch(setChangeElement(false));
             } else return;
         } else return;
-    }, [changeElement, setNodes, setEdges, selectedElement]);
+    }, [changeElement, setNodes, setEdges, selectedElement, reactFlowInstance]);
 
     const onConnect = (params) => {
         setEdges((eds) => {
@@ -133,6 +130,13 @@ const DnDFlow = () => {
         dispatch(setSelectedElement({}));
     };
 
+    const onNodesDelete = (nodes) => {
+        dispatch(setSelectedElement({}));
+    };
+    const onEdgesDelete = (edges) => {
+        dispatch(setSelectedElement({}));
+    };
+
     const edgeTypes = useMemo(() => ({ default: BezierEdge }), []);
 
     return (
@@ -154,6 +158,8 @@ const DnDFlow = () => {
                             fitView
                             onNodeClick={onNodeClick}
                             onEdgeClick={onEdgeClick}
+                            onNodesDelete={onNodesDelete}
+                            onEdgesDelete={onEdgesDelete}
                             edgeTypes={edgeTypes}
                         >
                             <Controls />

@@ -15,16 +15,6 @@ export const Form = styled.form`
     }
 `;
 
-export const FormButtonWrapper = styled.div`
-    display: flex;
-    justify-content: center;
-    margin-top: 2em;
-    & > div {
-        border-radius: 1em !important;
-        margin: 0.5em 1em;
-    }
-`;
-
 export const Select = styled.select`
     padding: 0.5em;
     width: 100%;

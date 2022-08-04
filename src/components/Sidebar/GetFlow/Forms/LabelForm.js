@@ -1,27 +1,39 @@
 import { useEffect, useRef, useState } from "react";
-import { FormStyled, Img, Inputstyled, SetButton } from "./LabelForm.Styled";
-import { Paragraph } from "./../../../Common/Paragraph";
-
-import Notice from "./../../../../assets/images/info.svg";
+import { FormStyled, Inputstyled, SetButton } from "./LabelForm.Styled";
 import { useDispatch, useSelector } from "react-redux";
 import {
     setChangeElement,
     setSelectedElement,
 } from "../../../../Redux/mainSlice";
 import ErrorText from "../../../Common/ErrorText";
+import Notice from "../../../Common/Notice";
 
 const LabelForm = ({ placeholder, label }) => {
     const [value, setValue] = useState("");
     const [emptyError, setEmptyError] = useState(false);
+    const [numberError, setNumberError] = useState(false);
     const input = useRef(null);
     const selectedElement = useSelector((state) => state.flow.selectedElement);
     const dispatch = useDispatch();
+
+    const checkNumber = (event) => {
+        const inputValue = event.target.value;
+        if (label.includes("edge")) {
+            if (!/^[0-9]+$/.test(inputValue)) {
+                setNumberError(true);
+                console.log(numberError)
+            } else {
+                setNumberError(false);
+            }
+        }
+        setValue(inputValue);
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!value.trim()) {
             setEmptyError(true);
-        } else {
+        } else if (value.trim() && !numberError) {
             setEmptyError(false);
             const element = { ...selectedElement };
             element.data = { label: value };
@@ -37,16 +49,16 @@ const LabelForm = ({ placeholder, label }) => {
 
     return (
         <FormStyled>
-            <Paragraph>
-                <Img src={Notice} alt="" />
-                {label}
-            </Paragraph>
+            <Notice>{label}</Notice>
             <Inputstyled
                 placeholder={placeholder}
-                onChange={(e) => setValue(e.target.value)}
+                onChange={checkNumber}
                 value={value}
                 ref={input}
             />
+            {numberError ? (
+                <ErrorText width="10em">Just number is valid !</ErrorText>
+            ) : null}
             {emptyError ? <ErrorText width="10em">Empty!!</ErrorText> : null}
             <SetButton type="submit" onClick={handleSubmit}>
                 set

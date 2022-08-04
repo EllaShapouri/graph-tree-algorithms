@@ -1,8 +1,6 @@
 import { Fragment } from "react";
-import { DnDNode, Img } from "./DnDNodeContainer.styled";
-import { Paragraph } from "./../../../Common/Paragraph";
-
-import Notice from "./../../../../assets/images/info.svg";
+import { DnDNode } from "./DnDNodeContainer.styled";
+import Notice from "./../../../Common/Notice";
 
 const DnDNodeContainer = () => {
     const onDragStart = (event, nodeType) => {
@@ -12,10 +10,7 @@ const DnDNodeContainer = () => {
 
     return (
         <Fragment>
-            <Paragraph>
-                <Img src={Notice} alt="" />
-                You can drag this node to the pane on the left.
-            </Paragraph>
+            <Notice>You can drag this node to the pane on the left.</Notice>
 
             <DnDNode
                 onDragStart={(event) => onDragStart(event, "default")}

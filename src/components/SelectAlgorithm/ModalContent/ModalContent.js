@@ -7,6 +7,7 @@ import {
     setSelectedDataStructure,
 } from "../../../Redux/dataSlice";
 import Button from "../../Button/Button";
+import { ButtonWrapper } from "../../Button/Button.styled";
 import { Gradientbox } from "../../Common/Gradientbox";
 import { Title } from "../../Common/Title";
 import {
@@ -16,7 +17,6 @@ import {
     Option,
     RadioWrapper,
     Select,
-    FormButtonWrapper,
 } from "./ModalContent.styled";
 
 const ModalContent = () => {
@@ -76,11 +76,11 @@ const ModalContent = () => {
                 </Label>
             </RadioWrapper>
 
-            <FormButtonWrapper>
+            <ButtonWrapper margin="2em 0 0">
                 <Gradientbox width="150px" height="auto">
                     <Button type="submit">next step</Button>
                 </Gradientbox>
-            </FormButtonWrapper>
+            </ButtonWrapper>
         </Form>
     );
 };

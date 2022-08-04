@@ -8,7 +8,3 @@ export const DataWrapper = styled.div`
     }
 `;
 
-export const DataAlgorithmWrapper = styled.div`
-    margin-bottom: 1em;
-`;
-

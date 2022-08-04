@@ -17,3 +17,13 @@ export const StyledButton = styled.button`
         transform: scale(1.05);
     }
 `;
+
+export const ButtonWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    margin: ${({ margin }) => margin};
+    & > div {
+        border-radius: 1em !important;
+        margin: 0.5em 1em;
+    }
+`;

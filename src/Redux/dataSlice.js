@@ -1,15 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { setAlgorithm } from "./../utils/setAlgorithm";
 
 export const dataSlice = createSlice({
     name: "data",
     initialState: {
         dataStructure: "",
-        algorithm: "",
+        algorithm: {},
         initialNode: [],
     },
     reducers: {
         setSelectedAlgorithm: (state, action) => {
-            state.algorithm = action.payload;
+            state.algorithm = setAlgorithm(action.payload);
         },
 
         setSelectedDataStructure: (state, action) => {

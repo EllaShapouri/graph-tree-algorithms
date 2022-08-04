@@ -13,6 +13,12 @@ export const FormStyled = styled.form`
     p {
         justify-content: center !important;
     }
+    div {
+        margin-top: 0;
+        p {
+            justify-content: flex-start !important;
+        }
+    }
 `;
 
 export const Inputstyled = styled.input`
@@ -35,11 +41,6 @@ export const Inputstyled = styled.input`
         -webkit-box-shadow: 0px 4px 4px -4px rgba(0, 0, 0, 0.4);
         box-shadow: 0px 4px 4px -4px rgba(0, 0, 0, 0.4);
     }
-`;
-
-export const Img = styled.img`
-    width: 1.4em;
-    margin-right: 0.4em;
 `;
 
 export const SetButton = styled.button`
