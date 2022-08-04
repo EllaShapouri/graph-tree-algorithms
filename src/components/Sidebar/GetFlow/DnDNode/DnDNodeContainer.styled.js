@@ -21,8 +21,3 @@ export const DnDNode = styled.div`
         border-color: #ff0072;
     }
 `;
-
-export const Img = styled.img`
-    width: 1.4em;
-    margin-right: 0.4em;
-`;

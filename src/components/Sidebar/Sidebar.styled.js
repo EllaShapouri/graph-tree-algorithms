@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 export const Aside = styled.aside`
     font-size: 0.8em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background: ${({ theme }) => theme.colors.backgroundSide};
     background: ${({ theme }) => theme.colors.white};
     

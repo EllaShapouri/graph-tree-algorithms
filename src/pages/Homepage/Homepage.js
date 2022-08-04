@@ -1,7 +1,7 @@
 import { Container } from "./Homepage.styled.js";
 import Header from "../../components/Header/Header";
 import Steps from "../../components/Steps/Steps";
-import Buttonwrapper from "../../components/Button/Buttonwrapper";
+import SelectAlgorithm from "../../components/SelectAlgorithm/SelectAlgorithm.js";
 
 const Homepage = () => {
     return (
@@ -9,7 +9,7 @@ const Homepage = () => {
             <Header />
             <main>
                 <Steps />
-                <Buttonwrapper />
+                <SelectAlgorithm />
             </main>
         </Container>
     );

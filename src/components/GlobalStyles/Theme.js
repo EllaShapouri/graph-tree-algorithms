@@ -6,7 +6,9 @@ const theme = {
         text2: "#5B5353",
         white: "#eee",
         backgroundSide: "#efeef0",
-        handle : "#9d9c9f"
+        handle : "#9d9c9f",
+        startNode : "#C8B0F44F",
+        error : "#db1414"
     },
 };
 

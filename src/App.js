@@ -1,6 +1,7 @@
 import { ThemeProvider } from "styled-components";
+import { ModalProvider } from "styled-react-modal";
 
-import GlobalStyles from "./components/GlobalStyles/GlobalStyles";
+import {GlobalStyles, SpecialModalBackground} from "./components/GlobalStyles/GlobalStyles";
 import ShowAlgorithmApp from "./containers/ShowAlgorithmApp";
 
 import Theme from "./components/GlobalStyles/Theme";
@@ -8,8 +9,10 @@ import Theme from "./components/GlobalStyles/Theme";
 function App() {
     return (
         <ThemeProvider theme={Theme}>
-            <GlobalStyles />
-            <ShowAlgorithmApp />
+            <ModalProvider backgroundComponent={SpecialModalBackground}>
+                <GlobalStyles />
+                <ShowAlgorithmApp />
+            </ModalProvider>
         </ThemeProvider>
     );
 }

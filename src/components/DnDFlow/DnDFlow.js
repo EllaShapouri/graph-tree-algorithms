@@ -12,22 +12,26 @@ import ReactFlow, {
 import Sidebar from "../Sidebar/Sidebar";
 import { setChangeElement, setSelectedElement } from "../../Redux/mainSlice";
 import { DnDFlowStyled, DnDWrapper, FlowWrapper } from "./DnDFlow.styled";
-
-const initialNodes = [];
-
-let id = 0;
-const getId = () => `node_${id++}`;
+import { useNavigate } from "react-router-dom";
 
 const DnDFlow = () => {
     const reactFlowWrapper = useRef(null);
+    const selectedElement = useSelector((state) => state.flow.selectedElement);
+    const changeElement = useSelector((state) => state.flow.changeElement);
+    const algorithm = useSelector((state) => state.data.algorithm);
+    const dataStructure = useSelector((state) => state.data.dataStructure);
+    const initialNode = useSelector((state) => state.data.initialNode);
+    const dispatch = useDispatch();
 
-    const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+    const navigate = useNavigate();
+
+    const [nodes, setNodes, onNodesChange] = useNodesState(initialNode);
     const [edges, setEdges, onEdgesChange] = useEdgesState([]);
     const [reactFlowInstance, setReactFlowInstance] = useState(null);
 
-    const selectedElement = useSelector((state) => state.flow.selectedElement);
-    const changeElement = useSelector((state) => state.flow.changeElement);
-    const dispatch = useDispatch();
+    useEffect(() => {
+        if (!algorithm || !dataStructure) navigate("/");
+    }, []);
 
     const onNodeClick = (event, node) => {
         dispatch(setSelectedElement(node));
@@ -40,10 +44,8 @@ const DnDFlow = () => {
         if (changeElement && selectedElement.id) {
             const elementId = selectedElement.id;
             const elementLabel = selectedElement.data.label;
-            console.log("nodesa", nodes);
             if (selectedElement.id.includes("node")) {
                 setNodes((nds) => {
-                    console.log("nds", nds);
                     return nds.map((node) => {
                         if (node.id === elementId) {
                             node.data = {
@@ -67,16 +69,24 @@ const DnDFlow = () => {
                 dispatch(setChangeElement(false));
             } else return;
         } else return;
-    }, [changeElement, setNodes, setEdges, selectedElement]);
+    }, [changeElement, setNodes, setEdges, selectedElement, reactFlowInstance]);
 
-    const onConnect = (params) =>
+    const onConnect = (params) => {
         setEdges((eds) => {
             eds.map((edge) => (edge.selected = false));
-            const id = `edge_${edges.length + 1}`;
+            let newEds = [];
+            // each node has just one parent in tree
+            if (dataStructure === "tree") {
+                newEds = eds.filter((edge) => params.target !== edge.target);
+            } else {
+                newEds = eds;
+            }
+            const id = `edge_${newEds.length + 1}`;
             const edge = { ...params, id, selected: true };
             dispatch(setSelectedElement(edge));
-            return addEdge(edge, eds);
+            return addEdge(edge, newEds);
         });
+    };
 
     const onDragOver = useCallback((event) => {
         event.preventDefault();
@@ -97,12 +107,14 @@ const DnDFlow = () => {
                 x: event.clientX - reactFlowBounds.left,
                 y: event.clientY - reactFlowBounds.top,
             });
+            const nodesLength = nodes.length;
             const newNode = {
-                id: getId(),
+                id: `node_${nodesLength}`,
                 type: "default",
                 position,
                 data: { label: `${type} node` },
             };
+
             setNodes((nds) => {
                 nds.map((node) => {
                     node.selected = false;
@@ -111,10 +123,17 @@ const DnDFlow = () => {
             });
             dispatch(setSelectedElement(newNode));
         },
-        [reactFlowInstance]
+        [reactFlowInstance, nodes]
     );
 
     const onPaneClick = () => {
+        dispatch(setSelectedElement({}));
+    };
+
+    const onNodesDelete = (nodes) => {
+        dispatch(setSelectedElement({}));
+    };
+    const onEdgesDelete = (edges) => {
         dispatch(setSelectedElement({}));
     };
 
@@ -139,6 +158,8 @@ const DnDFlow = () => {
                             fitView
                             onNodeClick={onNodeClick}
                             onEdgeClick={onEdgeClick}
+                            onNodesDelete={onNodesDelete}
+                            onEdgesDelete={onEdgesDelete}
                             edgeTypes={edgeTypes}
                         >
                             <Controls />

@@ -1,11 +1,13 @@
 import { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import InterBold from "./../../assets/fonts/Inter-Bold.ttf";
 import InterMedium from "./../../assets/fonts/Inter-Medium.ttf";
 import InterRegular from "./../../assets/fonts/Inter-Regular.ttf";
 
 import "normalize.css";
+import { BaseModalBackground } from "styled-react-modal";
 
-const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
     @font-face {
         font-family: 'Inter';
         src: url(${InterRegular}) format('truetype');
@@ -37,6 +39,10 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    *:focus-visible {
+        outline: 0;
+    }
+
     #root {
         width: 100%;
         height: 100%;
@@ -44,4 +50,7 @@ const GlobalStyles = createGlobalStyle`
 
 `;
 
-export default GlobalStyles;
+export const SpecialModalBackground = styled(BaseModalBackground)`
+    background-color: #eeeeeea1;
+    opacity: 1;
+`;

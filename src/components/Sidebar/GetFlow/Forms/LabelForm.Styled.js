@@ -13,6 +13,12 @@ export const FormStyled = styled.form`
     p {
         justify-content: center !important;
     }
+    div {
+        margin-top: 0;
+        p {
+            justify-content: flex-start !important;
+        }
+    }
 `;
 
 export const Inputstyled = styled.input`
@@ -37,11 +43,6 @@ export const Inputstyled = styled.input`
     }
 `;
 
-export const Img = styled.img`
-    width: 1.4em;
-    margin-right: 0.4em;
-`;
-
 export const SetButton = styled.button`
     border: 0.1em solid ${({ theme }) => theme.colors.secondary};
     padding: 0.5em;
@@ -51,4 +52,5 @@ export const SetButton = styled.button`
     border-radius: 0.3em;
     width: 10em;
     margin: auto;
+    cursor: pointer;
 `;

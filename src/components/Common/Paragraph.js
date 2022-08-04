@@ -7,5 +7,5 @@ export const Paragraph = styled.p`
     line-height: 1.5em;
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
 `;
