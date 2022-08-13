@@ -81,7 +81,14 @@ const DnDFlow = () => {
             } else {
                 newEds = eds;
             }
-            const id = `edge_${newEds.length + 1}`;
+
+            let id = "edge_0";
+            if (newEds.length != 0) {
+                const lastElementId = newEds[newEds.length - 1].id;
+                const idNumber = lastElementId.replace(/^\D+/g, "");
+                id = `edge_${parseInt(idNumber) + 1}`;
+            }
+            // just get the number
             const edge = { ...params, id, selected: true };
             dispatch(setSelectedElement(edge));
             return addEdge(edge, newEds);
@@ -107,9 +114,12 @@ const DnDFlow = () => {
                 x: event.clientX - reactFlowBounds.left,
                 y: event.clientY - reactFlowBounds.top,
             });
-            const nodesLength = nodes.length;
+            const lastElementId = nodes[nodes.length - 1].id;
+            const idNumber = lastElementId.replace(/^\D+/g, "");
+            console.log(idNumber);
+            const nodeId = parseInt(idNumber) + 1;
             const newNode = {
-                id: `node_${nodesLength}`,
+                id: `node_${nodeId}`,
                 type: "default",
                 position,
                 data: { label: `${type} node` },
