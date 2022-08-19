@@ -44,13 +44,19 @@ export const Inputstyled = styled.input`
 `;
 
 export const SetButton = styled.button`
-    border: 0.1em solid ${({ theme }) => theme.colors.secondary};
-    padding: 0.5em;
-    background-color: ${({ theme }) => theme.colors.primary};
+    border: 0.1em solid
+        ${({ theme, bg }) =>
+            bg === "blue" ? theme.colors.primary : theme.colors.error};
     color: ${({ theme }) => theme.colors.white};
+    padding: 0.5em;
+    background-color: ${({ theme, bg }) =>
+        bg === "blue" ? theme.colors.primary : "transparent"};
+    color: ${({ theme, bg }) =>
+        bg === "blue" ? theme.colors.white : theme.colors.error};
     font-weight: 500;
     border-radius: 0.3em;
     width: 10em;
     margin: auto;
+    margin-top: 0.2em;
     cursor: pointer;
 `;
