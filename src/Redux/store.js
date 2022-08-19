@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import mainReducer from "./mainSlice";
+import getFlowReducer from "./getFlowSlice";
 import dataReducer from "./dataSlice";
+import algorithmResultReducer from "./algorithmResultSlice";
 
 export default configureStore({
     reducer: {
-        flow: mainReducer,
-        data: dataReducer
+        flow: getFlowReducer,
+        data: dataReducer,
+        result: algorithmResultReducer,
     },
 });

@@ -1,12 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const mainSlice = createSlice({
+export const getFlowSlice = createSlice({
     name: "flow",
     initialState: {
         edges: [],
         nodes: [],
         selectedElement: {},
         changeElement: false,
+        deleteElement : false,
     },
     reducers: {
         setAllEdges: (state, action) => {
@@ -24,6 +25,10 @@ export const mainSlice = createSlice({
         setChangeElement: (state, action) => {
             state.changeElement = action.payload;
         },
+
+        setDeleteElement: (state, action) => {
+            state.deleteElement = action.payload;
+        },
     },
 });
 
@@ -33,6 +38,7 @@ export const {
     setChangeElement,
     setAllEdges,
     setAllNodes,
-} = mainSlice.actions;
+    setDeleteElement,
+} = getFlowSlice.actions;
 
-export default mainSlice.reducer;
+export default getFlowSlice.reducer;
