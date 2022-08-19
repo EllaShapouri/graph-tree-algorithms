@@ -23,7 +23,7 @@ export const DnDFlowStyled = styled.div`
 
     .react-flow__node {
         font-size: 0.6em;
-        background: transparent;
+        background: white;
         border: 0.1em solid ${({ theme }) => theme.colors.text2};
         border-radius: 0.5em;
         color: ${({ theme }) => theme.colors.text};
@@ -64,6 +64,10 @@ export const DnDFlowStyled = styled.div`
 
     .react-flow__controls {
         box-shadow: 0 0 2px 1px rgba(154, 71, 233, 0.59);
+    }
+    .react-flow__node.visited {
+        border: 0.1em solid ${({ theme }) => theme.colors.secondary};
+        border-left-width: 0.8em;
     }
 
     .react-flow__controls-button {

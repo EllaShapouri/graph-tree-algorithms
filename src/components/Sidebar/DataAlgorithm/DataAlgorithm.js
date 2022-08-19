@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Paragraph } from "./../../Common/Paragraph";
 import { Title } from "./../../Common/Title";
-import { DataWrapper } from "./DataAlgorithm.styled";
+import { DataWrapper } from "../../Common/DataWrapper";
 import { useLocation } from "react-router-dom";
 import Notices from "./Notices/Notices";
 

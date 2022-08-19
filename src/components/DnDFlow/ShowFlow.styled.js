@@ -8,7 +8,7 @@ export const ShowFlowStyled = styled.div`
 
     .react-flow__node {
         font-size: 0.6em;
-        background: transparent;
+        background: white;
         border: 0.1em solid ${({ theme }) => theme.colors.text2};
         border-radius: 0.5em;
         color: ${({ theme }) => theme.colors.text};
@@ -29,13 +29,6 @@ export const ShowFlowStyled = styled.div`
         background-color: ${({ theme }) => theme.colors.startNode} !important;
     }
 
-    .react-flow__node.selectable:hover {
-        border: 1px solid ${({ theme }) => theme.colors.primary} !important;
-        .react-flow__handle {
-            background: ${({ theme }) => theme.colors.primary} !important;
-        }
-    }
-
     .react-flow__controls {
         box-shadow: 0 0 2px 1px rgba(154, 71, 233, 0.59);
     }
@@ -47,8 +40,30 @@ export const ShowFlowStyled = styled.div`
         }
     }
 
-    .react-flow__controls button[title="toggle interactivity"]{
+    .react-flow__controls button[title="toggle interactivity"] {
         display: none;
+    }
+
+    .react-flow__edge path {
+        stroke-dasharray: 5;
+    }
+
+    .react-flow__edge.visited path {
+        stroke-dasharray: 0;
+        stroke: ${({ theme }) => theme.colors.primary} !important;
+        stroke-width: 1.2;
+    }
+
+    .react-flow__node.visited {
+        border: 0.1em solid ${({ theme }) => theme.colors.secondary};
+        border-left-width: 0.8em;
+        .react-flow__handle {
+            background-color: ${({ theme }) => theme.colors.primary} !important;
+        }
+        .react-flow__handle-bottom,
+        .react-flow__handle-top {
+            left: 45.5%;
+        }
     }
 
     @media (min-width: 768px) {

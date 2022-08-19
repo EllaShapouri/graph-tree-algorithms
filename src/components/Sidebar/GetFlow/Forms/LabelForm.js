@@ -3,8 +3,9 @@ import { FormStyled, Inputstyled, SetButton } from "./LabelForm.Styled";
 import { useDispatch, useSelector } from "react-redux";
 import {
     setChangeElement,
+    setDeleteElement,
     setSelectedElement,
-} from "../../../../Redux/mainSlice";
+} from "../../../../Redux/getFlowSlice";
 import ErrorText from "../../../Common/ErrorText";
 import Notice from "../../../Common/Notice";
 
@@ -21,7 +22,6 @@ const LabelForm = ({ placeholder, label }) => {
         if (label.includes("edge")) {
             if (!/^[0-9]+$/.test(inputValue)) {
                 setNumberError(true);
-                console.log(numberError)
             } else {
                 setNumberError(false);
             }
@@ -43,6 +43,11 @@ const LabelForm = ({ placeholder, label }) => {
         }
     };
 
+    const handleDelete = (e) => {
+        e.preventDefault();
+        dispatch(setDeleteElement(true));
+    };
+
     useEffect(() => {
         input.current.focus();
     }, [selectedElement]);
@@ -60,9 +65,14 @@ const LabelForm = ({ placeholder, label }) => {
                 <ErrorText width="10em">Just number is valid !</ErrorText>
             ) : null}
             {emptyError ? <ErrorText width="10em">Empty!!</ErrorText> : null}
-            <SetButton type="submit" onClick={handleSubmit}>
+            <SetButton bg="blue" type="submit" onClick={handleSubmit}>
                 set
             </SetButton>
+            {selectedElement.id !== "node_0" ? (
+                <SetButton bg="red" onClick={handleDelete}>
+                    remove
+                </SetButton>
+            ) : null}
         </FormStyled>
     );
 };

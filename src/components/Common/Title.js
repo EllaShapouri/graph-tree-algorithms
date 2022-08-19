@@ -5,7 +5,8 @@ export const Title = styled.h3`
     font-weight: 700;
     line-height: 1.4em;
     text-align: center;
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme, color }) =>
+        color === "purple" ? theme.colors.secondary : theme.colors.primary};
     max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : "auto")};
     margin: 0;
 `;

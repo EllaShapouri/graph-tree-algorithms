@@ -10,13 +10,21 @@ import ReactFlow, {
 } from "react-flow-renderer";
 
 import Sidebar from "../Sidebar/Sidebar";
-import { setChangeElement, setSelectedElement } from "../../Redux/mainSlice";
+import {
+    setChangeElement,
+    setDeleteElement,
+    setSelectedElement,
+} from "../../Redux/getFlowSlice";
 import { DnDFlowStyled, DnDWrapper, FlowWrapper } from "./DnDFlow.styled";
 import { useNavigate } from "react-router-dom";
+
+import { defaultedges } from "./../../utils/edges";
+import { defaultnodes } from "../../utils/nodes";
 
 const DnDFlow = () => {
     const reactFlowWrapper = useRef(null);
     const selectedElement = useSelector((state) => state.flow.selectedElement);
+    const deleteElement = useSelector((state) => state.flow.deleteElement);
     const changeElement = useSelector((state) => state.flow.changeElement);
     const algorithm = useSelector((state) => state.data.algorithm);
     const dataStructure = useSelector((state) => state.data.dataStructure);
@@ -25,13 +33,9 @@ const DnDFlow = () => {
 
     const navigate = useNavigate();
 
-    const [nodes, setNodes, onNodesChange] = useNodesState(initialNode);
-    const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+    const [nodes, setNodes, onNodesChange] = useNodesState(defaultnodes);
+    const [edges, setEdges, onEdgesChange] = useEdgesState(defaultedges);
     const [reactFlowInstance, setReactFlowInstance] = useState(null);
-
-    useEffect(() => {
-        if (!algorithm || !dataStructure) navigate("/");
-    }, []);
 
     const onNodeClick = (event, node) => {
         dispatch(setSelectedElement(node));
@@ -39,6 +43,18 @@ const DnDFlow = () => {
     const onEdgeClick = (event, edge) => {
         dispatch(setSelectedElement(edge));
     };
+
+    useEffect(() => {
+        if (!algorithm || !dataStructure) navigate("/");
+    }, []);
+
+    useEffect(() => {
+        if (deleteElement) {
+            deleteElementById(selectedElement.id);
+            dispatch(setDeleteElement(false));
+            dispatch(setSelectedElement({}));
+        }
+    }, [deleteElement, reactFlowInstance, selectedElement]);
 
     useEffect(() => {
         if (changeElement && selectedElement.id) {
@@ -116,7 +132,6 @@ const DnDFlow = () => {
             });
             const lastElementId = nodes[nodes.length - 1].id;
             const idNumber = lastElementId.replace(/^\D+/g, "");
-            console.log(idNumber);
             const nodeId = parseInt(idNumber) + 1;
             const newNode = {
                 id: `node_${nodeId}`,
@@ -136,18 +151,18 @@ const DnDFlow = () => {
         [reactFlowInstance, nodes]
     );
 
+    const deleteElementById = (id) => {
+        if (selectedElement.id.includes("node")) {
+            setNodes((nds) => nds.filter((node) => node.id !== id));
+        } else setEdges((eds) => eds.filter((edge) => edge.id !== id));
+    };
+
     const onPaneClick = () => {
         dispatch(setSelectedElement({}));
     };
 
-    const onNodesDelete = (nodes) => {
-        dispatch(setSelectedElement({}));
-    };
-    const onEdgesDelete = (edges) => {
-        dispatch(setSelectedElement({}));
-    };
-
     const edgeTypes = useMemo(() => ({ default: BezierEdge }), []);
+    
 
     return (
         <DnDWrapper>
@@ -168,8 +183,7 @@ const DnDFlow = () => {
                             fitView
                             onNodeClick={onNodeClick}
                             onEdgeClick={onEdgeClick}
-                            onNodesDelete={onNodesDelete}
-                            onEdgesDelete={onEdgesDelete}
+                            deleteKeyCode={null}
                             edgeTypes={edgeTypes}
                         >
                             <Controls />
