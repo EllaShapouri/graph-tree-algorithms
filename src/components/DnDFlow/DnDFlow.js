@@ -33,8 +33,8 @@ const DnDFlow = () => {
 
     const navigate = useNavigate();
 
-    const [nodes, setNodes, onNodesChange] = useNodesState(defaultnodes);
-    const [edges, setEdges, onEdgesChange] = useEdgesState(defaultedges);
+    const [nodes, setNodes, onNodesChange] = useNodesState(initialNode);
+    const [edges, setEdges, onEdgesChange] = useEdgesState([]);
     const [reactFlowInstance, setReactFlowInstance] = useState(null);
 
     const onNodeClick = (event, node) => {
@@ -154,6 +154,9 @@ const DnDFlow = () => {
     const deleteElementById = (id) => {
         if (selectedElement.id.includes("node")) {
             setNodes((nds) => nds.filter((node) => node.id !== id));
+            setEdges((eds) =>
+                eds.filter((edge) => edge.source !== id && edge.target !== id)
+            );
         } else setEdges((eds) => eds.filter((edge) => edge.id !== id));
     };
 
@@ -162,7 +165,6 @@ const DnDFlow = () => {
     };
 
     const edgeTypes = useMemo(() => ({ default: BezierEdge }), []);
-    
 
     return (
         <DnDWrapper>
