@@ -1,11 +1,12 @@
-import { Fragment } from "react";
 import { useSelector } from "react-redux";
 import BFScomponent from "../../../AlgorithmsComponent/BFS/BFScomponent";
+import DFScomponent from "../../../AlgorithmsComponent/DFS/DFScomponent";
 
 const ShowReault = () => {
     const algorithm = useSelector((state) => state.data.algorithm);
     const ENUM_ALGORITHMS = {
         BFS: <BFScomponent />,
+        DFS: <DFScomponent />,
     };
     return <div>{ENUM_ALGORITHMS[algorithm.name]}</div>;
 };

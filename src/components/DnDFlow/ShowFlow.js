@@ -38,7 +38,7 @@ const ShowFlow = () => {
     }, []);
 
     useEffect(() => {
-        if (step > -1 && step < lastStep) {
+        if (step > -1 && step < lastStep && nodeQueue[step] !== undefined) {
             // get index of nodes that they was changed in this step
             const changedNodes = nodeQueue[step];
             // set visited className to visited edges and nodes

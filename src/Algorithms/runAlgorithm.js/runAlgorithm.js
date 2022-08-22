@@ -1,4 +1,5 @@
 import { bfs } from "../BFS/BFS";
+import { dfs } from "../DFS/DFS";
 
 export const runAlgorithm = (algorithm, matrix) => {
     var resualts = {};
@@ -12,6 +13,7 @@ export const runAlgorithm = (algorithm, matrix) => {
         case "RBFS":
             break;
         case "DFS":
+            resualts = dfs(matrix, 0);
             break;
         case "A*":
             break;

@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const algorithmResultSlice = createSlice({
     name: "algorithmResult",
     initialState: {
-        result: {},
+        result: [],
         nodeQueue: [],
         edgeQueue: [],
         step: -1,
@@ -15,11 +15,11 @@ export const algorithmResultSlice = createSlice({
                 action.payload;
             // nodeQueue contains index of nodes
             state.nodeQueue = visitedNodesAllSteps;
-            state.lastStep = state.nodeQueue.length;
             // edgeQueue contains id of edges
             state.edgeQueue = visitedEdgesAllSteps;
             // all other result that have to show in sidebar
             state.result = resultQueue;
+            state.lastStep = state.result.length;
         },
         setStep: (state, action) => {
             if (action.payload === "start") state.step = -1;
