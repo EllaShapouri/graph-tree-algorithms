@@ -2,9 +2,6 @@ import { useEffect, useState } from "react";
 import { Gradientbox } from "../Common/Gradientbox";
 import Button from "../Button/Button";
 import { useEdges, useNodes } from "react-flow-renderer";
-import ErrorText from "./../Common/ErrorText";
-import { validateEdges } from "../../utils/validateEdges";
-import { validateNodes } from "../../utils/validateNodes";
 import { ButtonWrapper } from "../Button/Button.styled";
 import { useDispatch, useSelector } from "react-redux";
 import { setAllEdges, setAllNodes } from "../../Redux/getFlowSlice";
@@ -12,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import { runAlgorithm } from "../../Algorithms/runAlgorithm.js/runAlgorithm";
 import { setResult } from "../../Redux/algorithmResultSlice";
 import { createMatrix } from "../../utils/matrix";
+import ErrorHandle from "./ErrorHandle";
+import { checkFlow } from "../../utils/checkFlow";
 
 const ValidateFlow = () => {
     const nodes = useNodes();
@@ -19,16 +18,18 @@ const ValidateFlow = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const algorithm = useSelector((state) => state.data.algorithm);
-    const [edgeError, setEdgeError] = useState({});
-    const [nodeError, setNodeError] = useState({});
+    const depth = useSelector((state) => state.flow.depth);
+    const [validStatus, setValidStatus] = useState(false);
+    const [errors, setErrors] = useState([]);
 
     const ClickHandler = () => {
-        setEdgeError(validateEdges(edges));
-        setNodeError(validateNodes(nodes));
+        const { status, errors } = checkFlow(edges, nodes, algorithm, depth);
+        setErrors(errors);
+        setValidStatus(status);
     };
 
     useEffect(() => {
-        if (edgeError.valid && nodeError.valid) {
+        if (validStatus) {
             const validNodes = Object.freeze(nodes).map(
                 ({ selected, ...proprties }) => proprties
             );
@@ -42,21 +43,16 @@ const ValidateFlow = () => {
                 validEdges,
                 algorithm.requiredPath
             );
-            const resault = runAlgorithm(algorithm.name, matrix);
+            const resault = runAlgorithm(algorithm.name, matrix, depth);
             dispatch(setResult(resault));
             // navigate new page
             navigate("/showalgorithm");
         }
-    }, [edgeError, nodeError]);
+    }, [validStatus]);
 
     return (
         <div>
-            {!edgeError.valid ? (
-                <ErrorText width="11em">{edgeError.errorMessage}</ErrorText>
-            ) : null}
-            {!nodeError.valid ? (
-                <ErrorText width="11em">{nodeError.errorMessage}</ErrorText>
-            ) : null}
+            {!validStatus ? <ErrorHandle errors={errors} /> : null}
             <ButtonWrapper margin="1em auto">
                 <Gradientbox width="150px" height="auto">
                     <Button onClick={ClickHandler}>Next</Button>

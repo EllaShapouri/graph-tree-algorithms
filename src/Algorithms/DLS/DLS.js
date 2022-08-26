@@ -19,7 +19,7 @@ export const dls = (graph, start, limit) => {
     stack.push(start);
     resultQueue.push([...stack]);
 
-    while (stack.length != 0) {
+    while (stack.length !== 0) {
         var curNode = stack[stack.length - 1];
         visited[curNode] = true;
         visitedEdgesOneStep = [];
@@ -36,7 +36,6 @@ export const dls = (graph, start, limit) => {
         visitedNodesAllSteps.push([...visitedNodesOneStep]);
         resultQueue.push([...stack]);
     }
-    console.log("resultStack", resultQueue);
     return { resultQueue, visitedNodesAllSteps, visitedEdgesAllSteps };
 };
 
@@ -44,7 +43,7 @@ const getFirstUnvistedNode = (curNode, limit) => {
     if (depth < limit) {
         for (let i = 0; i < graphFlow[curNode].length; i++) {
             let newAdjacentNode = graphFlow[curNode][i];
-            if (newAdjacentNode.value != -1 && !visited[i]) {
+            if (newAdjacentNode.value !== -1 && !visited[i]) {
                 visitedEdgesOneStep.push(newAdjacentNode.id);
                 depth++;
                 return i;
