@@ -7,6 +7,7 @@ const ShowReault = () => {
     const ENUM_ALGORITHMS = {
         BFS: <BFScomponent />,
         DFS: <DFScomponent />,
+        DLS: <DFScomponent />,
     };
     return <div>{ENUM_ALGORITHMS[algorithm.name]}</div>;
 };

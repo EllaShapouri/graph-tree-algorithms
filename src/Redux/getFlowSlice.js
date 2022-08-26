@@ -7,7 +7,8 @@ export const getFlowSlice = createSlice({
         nodes: [],
         selectedElement: {},
         changeElement: false,
-        deleteElement : false,
+        deleteElement: false,
+        depth: 0,
     },
     reducers: {
         setAllEdges: (state, action) => {
@@ -29,6 +30,9 @@ export const getFlowSlice = createSlice({
         setDeleteElement: (state, action) => {
             state.deleteElement = action.payload;
         },
+        setDepth: (state, action) => {
+            state.depth = action.payload;
+        },
     },
 });
 
@@ -39,6 +43,7 @@ export const {
     setAllEdges,
     setAllNodes,
     setDeleteElement,
+    setDepth,
 } = getFlowSlice.actions;
 
 export default getFlowSlice.reducer;

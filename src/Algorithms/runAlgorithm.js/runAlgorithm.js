@@ -1,7 +1,8 @@
 import { bfs } from "../BFS/BFS";
 import { dfs } from "../DFS/DFS";
+import { dls } from "../DLS/DLS";
 
-export const runAlgorithm = (algorithm, matrix) => {
+export const runAlgorithm = (algorithm, matrix, depth) => {
     var resualts = {};
     switch (algorithm) {
         case "BFS":
@@ -14,6 +15,9 @@ export const runAlgorithm = (algorithm, matrix) => {
             break;
         case "DFS":
             resualts = dfs(matrix, 0);
+            break;
+        case "DLS":
+            resualts = dls(matrix, 0,depth);
             break;
         case "A*":
             break;

@@ -31,6 +31,12 @@ export const setAlgorithm = (AlgorithmName) => {
                 requiredPath: true,
             };
             break;
+        case "DLS":
+            algorithm = {
+                name: "DLS",
+                requiredPath: false,
+            };
+            break;
 
         default:
             algorithm = {
