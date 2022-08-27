@@ -1,6 +1,7 @@
 import { bfs } from "../BFS/BFS";
 import { dfs } from "../DFS/DFS";
 import { dls } from "../DLS/DLS";
+import { iddfs } from "../IDDFS/IDDFS";
 
 export const runAlgorithm = (algorithm, matrix, depth) => {
     var resualts = {};
@@ -17,7 +18,10 @@ export const runAlgorithm = (algorithm, matrix, depth) => {
             resualts = dfs(matrix, 0);
             break;
         case "DLS":
-            resualts = dls(matrix, 0,depth);
+            resualts = dls(matrix, 0, depth);
+            break;
+        case "IDDFS":
+            resualts = iddfs(matrix, 0);
             break;
         case "A*":
             break;

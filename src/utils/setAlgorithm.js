@@ -25,6 +25,12 @@ export const setAlgorithm = (AlgorithmName) => {
                 requiredPath: false,
             };
             break;
+        case "IDDFS":
+            algorithm = {
+                name: "IDDFS",
+                requiredPath: false,
+            };
+            break;
         case "A*":
             algorithm = {
                 name: "A*",

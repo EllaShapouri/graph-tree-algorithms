@@ -14,7 +14,8 @@ export const defaultnodes = [
     {
         id: "node_1",
         type: "default",
-        data: { label: "laba" },
+        className : "",
+        data: { label: "1" },
         dragging: false,
         height: 26,
         position: { x: 346.25, y: -33.25 },
@@ -25,7 +26,8 @@ export const defaultnodes = [
     {
         id: "node_2",
         type: "default",
-        data: { label: "lee" },
+        className : "",
+        data: { label: "2" },
         dragging: false,
         height: 26,
         position: { x: 185.25, y: -33.25 },
@@ -36,7 +38,8 @@ export const defaultnodes = [
     {
         id: "node_3",
         type: "default",
-        data: { label: "arya" },
+        className : "",
+        data: { label: "3" },
         dragging: false,
         height: 26,
         position: { x: 389.75, y: 37.75 },
@@ -47,7 +50,8 @@ export const defaultnodes = [
     {
         id: "node_4",
         type: "default",
-        data: { label: "tiba" },
+        className : "",
+        data: { label: "4" },
         dragging: false,
         height: 26,
         position: { x: 129.75, y: 48.75 },
@@ -58,7 +62,8 @@ export const defaultnodes = [
     {
         id: "node_5",
         type: "default",
-        data: { label: "carol" },
+        className : "",
+        data: { label: "5" },
         dragging: false,
         height: 26,
         position: { x: 261.75, y: 105.25 },

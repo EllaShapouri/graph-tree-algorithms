@@ -49,6 +49,9 @@ const ModalContent = () => {
                 <Option value="UCS">Uniform Cost Search - UCS</Option>
                 <Option value="DFS">Depth First Search - DFS</Option>
                 <Option value="DLS">Depth Limited Search - DLS</Option>
+                <Option value="IDDFS">
+                    Iterative Deepening Depth First Search - IDDFS
+                </Option>
                 <Option value="A*">A*</Option>
             </Select>
             <br />

@@ -33,8 +33,8 @@ const DnDFlow = () => {
 
     const navigate = useNavigate();
 
-    const [nodes, setNodes, onNodesChange] = useNodesState(initialNode);
-    const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+    const [nodes, setNodes, onNodesChange] = useNodesState(defaultnodes);
+    const [edges, setEdges, onEdgesChange] = useEdgesState(defaultedges);
     const [reactFlowInstance, setReactFlowInstance] = useState(null);
 
     const onNodeClick = (event, node) => {
@@ -138,6 +138,7 @@ const DnDFlow = () => {
                 type: "default",
                 position,
                 data: { label: `${type} node` },
+                className : ""
             };
 
             setNodes((nds) => {

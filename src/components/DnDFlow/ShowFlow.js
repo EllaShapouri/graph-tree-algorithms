@@ -15,6 +15,7 @@ import { setStep } from "../../Redux/algorithmResultSlice";
 const ShowFlow = () => {
     const reactFlowWrapper = useRef(null);
     const step = useSelector((state) => state.result.step);
+    const result = useSelector((state) => state.result.result);
     const lastStep = useSelector((state) => state.result.lastStep);
     const nodeQueue = useSelector((state) => state.result.nodeQueue);
     const edgeQueue = useSelector((state) => state.result.edgeQueue);
@@ -30,7 +31,8 @@ const ShowFlow = () => {
     const elementsSelectable = false;
 
     useEffect(() => {
-        if (initialNodes.length == 1 || initialEdges.length == 0) navigate("/");
+        if (initialNodes.length === 1 || initialEdges.length === 0)
+            navigate("/");
 
         return () => {
             dispatch(setStep("start"));
@@ -39,37 +41,48 @@ const ShowFlow = () => {
 
     useEffect(() => {
         if (step > -1 && step < lastStep && nodeQueue[step] !== undefined) {
-            // get index of nodes that they was changed in this step
-            const changedNodes = nodeQueue[step];
-            // set visited className to visited edges and nodes
-            changedNodes.forEach((changedNode) => {
-                if (changedNode == 0) {
-                    setNodes((nds) => {
-                        nds[changedNode].className = "startNode visited";
-                        return [...nds];
-                    });
-                } else {
-                    setNodes((nds) => {
-                        nds[changedNode].className = "visited";
-                        return [...nds];
+            if (result[step].length > 0) {
+                const changedNodes = nodeQueue[step];
+                // set visited className to visited edges and nodes
+                changedNodes.forEach((changedNode) => {
+                    setClassNamesNodes("visited", changedNode);
+                });
+                if (step > 0 && step <= lastStep) {
+                    const changedEdges = edgeQueue[step - 1];
+                    changedEdges.forEach((changedEdge) => {
+                        setClassNamesEdges("visited", changedEdge);
                     });
                 }
-            });
-            if (step > 0 && step <= lastStep) {
-                const changedEdges = edgeQueue[step - 1];
-                changedEdges.forEach((changedEdge) => {
-                    setEdges((eds) => {
-                        return eds.map((edge) => {
-                            if (edge.id === changedEdge) {
-                                edge = { ...edge, className: "visited" };
-                            }
-                            return edge;
-                        });
-                    });
-                });
+            } else if (step < lastStep - 1) {
+                console.log("in the else");
+                nodes.map((node, index) => setClassNamesNodes("", index));
+                edges.map((edge, index) => setClassNamesEdges("", edge.id));
             }
         }
-    }, [step, setNodes, nodeQueue, edgeQueue, reactFlowInstance]);
+    }, [step, nodeQueue, edgeQueue, reactFlowInstance]);
+
+    const setClassNamesEdges = (className, changedEdge) => {
+        setEdges((eds) => {
+            return eds.map((edge) => {
+                if (edge.id === changedEdge) {
+                    edge = { ...edge, className: className };
+                }
+                return edge;
+            });
+        });
+    };
+
+    const setClassNamesNodes = (className, changedNode) => {
+        setNodes((nds) => {
+            if (nodes[changedNode].className.includes("StartNode")) {
+                nds[changedNode].className = `StartNode ${className}`;
+                return [...nds];
+            } else {
+                nds[changedNode].className = `${className}`;
+                return [...nds];
+            }
+        });
+    };
 
     return (
         <DnDWrapper>
