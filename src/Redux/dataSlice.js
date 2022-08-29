@@ -39,7 +39,7 @@ export const dataSlice = createSlice({
                         data: { label: "root node", startNode: true },
                     },
                 ];
-                if (state.algorithm.requiredPath) {
+                if (state.algorithm.targetNode) {
                     state.initialNode.push(initialGoalNodeExample);
                 }
             } else if (action.payload === "graph") {
@@ -49,7 +49,7 @@ export const dataSlice = createSlice({
                         data: { label: "start node", startNode: true },
                     },
                 ];
-                if (state.algorithm.requiredPath) {
+                if (state.algorithm.targetNode) {
                     state.initialNode.push(initialGoalNodeExample);
                 }
             } else {

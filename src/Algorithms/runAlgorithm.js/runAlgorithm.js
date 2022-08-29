@@ -1,4 +1,5 @@
 import { bfs } from "../BFS/BFS";
+import { bidirectional } from "../BIDIRECTIONAL/BIDIRECTIONAL";
 import { dfs } from "../DFS/DFS";
 import { dls } from "../DLS/DLS";
 import { iddfs } from "../IDDFS/IDDFS";
@@ -25,6 +26,9 @@ export const runAlgorithm = (algorithm, matrix, depth) => {
             break;
         case "IDDFS":
             resualts = iddfs(matrix, 0);
+            break;
+        case "BIDIRECTIONAL":
+            resualts = bidirectional(matrix, 0,1);
             break;
         case "A*":
             break;

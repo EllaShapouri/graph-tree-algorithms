@@ -45,13 +45,16 @@ const ModalContent = () => {
                 <Option value="BFS" defaultValue>
                     Breadth First Search - BFS
                 </Option>
-                <Option value="RBFS">RBFS</Option>
                 <Option value="UCS">Uniform Cost Search - UCS</Option>
                 <Option value="DFS">Depth First Search - DFS</Option>
                 <Option value="DLS">Depth Limited Search - DLS</Option>
                 <Option value="IDDFS">
                     Iterative Deepening Depth First Search - IDDFS
                 </Option>
+                <Option value="BIDIRECTIONAL">
+                    Bidirectional Search
+                </Option>
+                <Option value="RBFS">RBFS</Option>
                 <Option value="A*">A*</Option>
             </Select>
             <br />
