@@ -19,7 +19,7 @@ export const createMatrix = (nodes, edges, requiredPath) => {
         var edgeValue = {};
         if (requiredPath) {
             edgeValue = {
-                value: edge.label,
+                value: parseInt(edge.label),
                 id: edge.id,
             };
             setMatrixValue(indexNodeSource, indexNodeTarget, edgeValue);

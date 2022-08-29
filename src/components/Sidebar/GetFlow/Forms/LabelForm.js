@@ -36,7 +36,7 @@ const LabelForm = ({ placeholder, label }) => {
         } else if (value.trim() && !numberError) {
             setEmptyError(false);
             const element = { ...selectedElement };
-            element.data = { label: value };
+            element.data = { ...element.data, label: value };
             dispatch(setSelectedElement(element));
             dispatch(setChangeElement(true));
             setValue("");
@@ -68,7 +68,8 @@ const LabelForm = ({ placeholder, label }) => {
             <SetButton bg="blue" type="submit" onClick={handleSubmit}>
                 set
             </SetButton>
-            {selectedElement.id !== "node_0" ? (
+            {Object.keys(selectedElement).length !== 0 &&
+            !selectedElement.data.startNode ? (
                 <SetButton bg="red" onClick={handleDelete}>
                     remove
                 </SetButton>

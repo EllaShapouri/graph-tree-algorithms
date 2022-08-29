@@ -6,9 +6,10 @@ const theme = {
         text2: "#5B5353",
         white: "#eee",
         backgroundSide: "#efeef0",
-        handle : "#9d9c9f",
-        startNode : "#C8B0F44F",
-        error : "#db1414"
+        handle: "#9d9c9f",
+        startNode: "#E8E3F0",
+        goalNode: "#E3F0EE",
+        error: "#db1414",
     },
 };
 

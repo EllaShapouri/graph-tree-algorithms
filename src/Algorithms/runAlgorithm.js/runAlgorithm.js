@@ -2,6 +2,7 @@ import { bfs } from "../BFS/BFS";
 import { dfs } from "../DFS/DFS";
 import { dls } from "../DLS/DLS";
 import { iddfs } from "../IDDFS/IDDFS";
+import { ucs } from "../UCS/UCS";
 
 export const runAlgorithm = (algorithm, matrix, depth) => {
     var resualts = {};
@@ -11,6 +12,8 @@ export const runAlgorithm = (algorithm, matrix, depth) => {
             resualts = bfs(matrix, 0);
             break;
         case "UCS":
+            // goal node is always node_1
+            resualts = ucs(matrix, 0, 1);
             break;
         case "RBFS":
             break;

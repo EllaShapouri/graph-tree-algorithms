@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import BFScomponent from "../../../AlgorithmsComponent/BFS/BFScomponent";
 import DFScomponent from "../../../AlgorithmsComponent/DFS/DFScomponent";
+import UCScomponent from "../../../AlgorithmsComponent/UCS/UCScomponent";
 
 const ShowReault = () => {
     const algorithm = useSelector((state) => state.data.algorithm);
@@ -9,6 +10,7 @@ const ShowReault = () => {
         DFS: <DFScomponent />,
         DLS: <DFScomponent />,
         IDDFS: <DFScomponent />,
+        UCS: <UCScomponent />,
     };
     return <div>{ENUM_ALGORITHMS[algorithm.name]}</div>;
 };
