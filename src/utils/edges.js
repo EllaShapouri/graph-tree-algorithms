@@ -7,6 +7,7 @@ export const defaultedges = [
         sourceHandle: null,
         target: "node_1",
         targetHandle: null,
+        data: { startNode: false }
     },
     {
         id: "edge_2",
@@ -16,6 +17,7 @@ export const defaultedges = [
         sourceHandle: null,
         target: "node_3",
         targetHandle: null,
+        data: { startNode: false }
     },
     {
         id: "edge_3",
@@ -25,6 +27,7 @@ export const defaultedges = [
         sourceHandle: null,
         target: "node_2",
         targetHandle: null,
+        data: { startNode: false }
     },
     {
         id: "edge_4",
@@ -34,6 +37,7 @@ export const defaultedges = [
         sourceHandle: null,
         target: "node_4",
         targetHandle: null,
+        data: { startNode: false }
     },
     {
         id: "edge_5",
@@ -43,6 +47,7 @@ export const defaultedges = [
         sourceHandle: null,
         target: "node_3",
         targetHandle: null,
+        data: { startNode: false }
     },
     {
         id: "edge_6",
@@ -52,6 +57,7 @@ export const defaultedges = [
         sourceHandle: null,
         target: "node_5",
         targetHandle: null,
+        data: { startNode: false }
     },
     {
         id: "edge_7",
@@ -61,5 +67,6 @@ export const defaultedges = [
         sourceHandle: null,
         target: "node_5",
         targetHandle: null,
+        data: { startNode: false }
     },
 ];

@@ -28,6 +28,9 @@ export const ShowFlowStyled = styled.div`
     .react-flow__node.StartNode {
         background-color: ${({ theme }) => theme.colors.startNode} !important;
     }
+    .react-flow__node.GoalNode {
+        background-color: ${({ theme }) => theme.colors.goalNode} !important;
+    }
 
     .react-flow__controls {
         box-shadow: 0 0 2px 1px rgba(154, 71, 233, 0.59);

@@ -105,7 +105,12 @@ const DnDFlow = () => {
                 id = `edge_${parseInt(idNumber) + 1}`;
             }
             // just get the number
-            const edge = { ...params, id, selected: true };
+            const edge = {
+                ...params,
+                id,
+                selected: true,
+                data: { startNode: false },
+            };
             dispatch(setSelectedElement(edge));
             return addEdge(edge, newEds);
         });
@@ -136,9 +141,9 @@ const DnDFlow = () => {
             const newNode = {
                 id: `node_${nodeId}`,
                 type: "default",
-                position,
-                data: { label: `${type} node` },
-                className : ""
+                position: position,
+                data: { label: `${type} node`, startNode: false },
+                className: "",
             };
 
             setNodes((nds) => {

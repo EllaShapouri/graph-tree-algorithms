@@ -13,9 +13,9 @@ export const defaultnodes = [
     },
     {
         id: "node_1",
+        className: "GoalNode",
         type: "default",
-        className : "",
-        data: { label: "1" },
+        data: { label: "1", startNode: true },
         dragging: false,
         height: 26,
         position: { x: 346.25, y: -33.25 },
@@ -26,7 +26,7 @@ export const defaultnodes = [
     {
         id: "node_2",
         type: "default",
-        className : "",
+        className: "",
         data: { label: "2" },
         dragging: false,
         height: 26,
@@ -38,7 +38,7 @@ export const defaultnodes = [
     {
         id: "node_3",
         type: "default",
-        className : "",
+        className: "",
         data: { label: "3" },
         dragging: false,
         height: 26,
@@ -50,7 +50,7 @@ export const defaultnodes = [
     {
         id: "node_4",
         type: "default",
-        className : "",
+        className: "",
         data: { label: "4" },
         dragging: false,
         height: 26,
@@ -62,8 +62,8 @@ export const defaultnodes = [
     {
         id: "node_5",
         type: "default",
-        className : "",
-        data: { label: "5" },
+        className: "",
+        data: { label: "5", startNode: false },
         dragging: false,
         height: 26,
         position: { x: 261.75, y: 105.25 },

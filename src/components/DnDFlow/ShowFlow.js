@@ -77,6 +77,9 @@ const ShowFlow = () => {
             if (nodes[changedNode].className.includes("StartNode")) {
                 nds[changedNode].className = `StartNode ${className}`;
                 return [...nds];
+            } else if (nodes[changedNode].className.includes("GoalNode")) {
+                nds[changedNode].className = `GoalNode ${className}`;
+                return [...nds];
             } else {
                 nds[changedNode].className = `${className}`;
                 return [...nds];

@@ -43,6 +43,10 @@ export const DnDFlowStyled = styled.div`
         background-color: ${({ theme }) => theme.colors.startNode} !important;
     }
 
+    .react-flow__node.GoalNode {
+        background-color: ${({ theme }) => theme.colors.goalNode} !important;
+    }
+
     .react-flow__edge-textbg {
         cursor: pointer;
     }
