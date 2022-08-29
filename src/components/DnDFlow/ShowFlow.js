@@ -54,7 +54,6 @@ const ShowFlow = () => {
                     });
                 }
             } else if (step < lastStep - 1) {
-                console.log("in the else");
                 nodes.map((node, index) => setClassNamesNodes("", index));
                 edges.map((edge, index) => setClassNamesEdges("", edge.id));
             }
