@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { FormStyled, Inputstyled, SetButton } from "./LabelForm.Styled";
+import { FormStyled, SetButton } from "./LabelForm.Styled";
 import { useDispatch, useSelector } from "react-redux";
 import {
     setChangeElement,
@@ -8,6 +8,7 @@ import {
 } from "../../../../Redux/getFlowSlice";
 import ErrorText from "../../../Common/ErrorText";
 import Notice from "../../../Common/Notice";
+import { InputStyled } from "../../../Common/InputStyled";
 
 const LabelForm = ({ placeholder, label }) => {
     const [value, setValue] = useState("");
@@ -55,7 +56,7 @@ const LabelForm = ({ placeholder, label }) => {
     return (
         <FormStyled>
             <Notice>{label}</Notice>
-            <Inputstyled
+            <InputStyled
                 placeholder={placeholder}
                 onChange={checkNumber}
                 value={value}

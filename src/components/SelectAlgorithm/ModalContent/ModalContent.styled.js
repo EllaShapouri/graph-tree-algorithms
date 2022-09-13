@@ -1,20 +1,5 @@
 import styled from "styled-components";
 
-export const Form = styled.form`
-    padding: 2em;
-    width: 100%;
-    h3 {
-        text-align: left;
-        margin-bottom: .3em;
-    }
-    button {
-        padding: .7em 1em;
-    }
-    @media (max-width: 768px) {
-        padding: 2em 1em;
-    }
-`;
-
 export const Select = styled.select`
     padding: 0.5em;
     width: 100%;
@@ -53,7 +38,7 @@ export const RadioWrapper = styled.div`
 
 export const Option = styled.option`
     padding: 0.5em;
-    font-size: .9em;
+    font-size: 0.9em;
     color: ${({ theme }) => theme.colors.text2};
     cursor: pointer;
     background-color: white;

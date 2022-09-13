@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Button from "../Button/Button";
 import { Gradientbox } from "../Common/Gradientbox";
+import { StyledModal } from "../Common/StyledModal";
 import ModalContent from "./ModalContent/ModalContent";
-import { ButtonWrapper, StyledModal } from "./SelectAlgorithm.styled";
+import { ButtonWrapper } from "./SelectAlgorithm.styled";
 
 const SelectAlgorithm = () => {
     const [isOpen, setIsOpen] = useState(false);

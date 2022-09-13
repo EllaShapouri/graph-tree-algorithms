@@ -6,6 +6,7 @@ export const setAlgorithm = (AlgorithmName) => {
                 name: "BFS",
                 requiredPath: false,
                 targetNode: false,
+                heuristic: false,
             };
             break;
         case "UCS":
@@ -13,6 +14,7 @@ export const setAlgorithm = (AlgorithmName) => {
                 name: "UCS",
                 requiredPath: true,
                 targetNode: true,
+                heuristic: false,
             };
             break;
         case "RBFS":
@@ -20,6 +22,7 @@ export const setAlgorithm = (AlgorithmName) => {
                 name: "RBFS",
                 requiredPath: false,
                 targetNode: false,
+                heuristic: false,
             };
             break;
         case "DFS":
@@ -27,6 +30,7 @@ export const setAlgorithm = (AlgorithmName) => {
                 name: "DFS",
                 requiredPath: false,
                 targetNode: false,
+                heuristic: false,
             };
             break;
         case "IDDFS":
@@ -34,6 +38,7 @@ export const setAlgorithm = (AlgorithmName) => {
                 name: "IDDFS",
                 requiredPath: false,
                 targetNode: false,
+                heuristic: false,
             };
             break;
         case "BIDIRECTIONAL":
@@ -41,13 +46,7 @@ export const setAlgorithm = (AlgorithmName) => {
                 name: "BIDIRECTIONAL",
                 requiredPath: false,
                 targetNode: true,
-            };
-            break;
-        case "A*":
-            algorithm = {
-                name: "A*",
-                requiredPath: true,
-                targetNode: true,
+                heuristic: false,
             };
             break;
         case "DLS":
@@ -55,14 +54,42 @@ export const setAlgorithm = (AlgorithmName) => {
                 name: "DLS",
                 requiredPath: false,
                 targetNode: false,
+                heuristic: false,
+            };
+            break;
+        case "A":
+            algorithm = {
+                name: "A",
+                requiredPath: true,
+                targetNode: true,
+                heuristic: true,
+            };
+            break;
+
+        case "RBFS":
+            algorithm = {
+                name: "RBFS",
+                requiredPath: true,
+                targetNode: true,
+                heuristic: true,
+            };
+            break;
+
+        case "GBFS":
+            algorithm = {
+                name: "GBFS",
+                requiredPath: true,
+                targetNode: true,
+                heuristic: true,
             };
             break;
 
         default:
             algorithm = {
                 name: AlgorithmName,
-                requiredPath: true,
-                targetNode: true,
+                requiredPath: false,
+                targetNode: false,
+                heuristic: false,
             };
             break;
     }

@@ -9,6 +9,8 @@ export const getFlowSlice = createSlice({
         changeElement: false,
         deleteElement: false,
         depth: 0,
+        heuristic: [],
+        showHeuristic: false
     },
     reducers: {
         setAllEdges: (state, action) => {
@@ -33,6 +35,12 @@ export const getFlowSlice = createSlice({
         setDepth: (state, action) => {
             state.depth = action.payload;
         },
+        setHeuristic: (state, action) => {
+            state.heuristic = action.payload;
+        },
+        SetShowHeuristic: (state, action) => {
+            state.showHeuristic = action.payload;
+        },
     },
 });
 
@@ -44,6 +52,8 @@ export const {
     setAllNodes,
     setDeleteElement,
     setDepth,
+    setHeuristic,
+    SetShowHeuristic
 } = getFlowSlice.actions;
 
 export default getFlowSlice.reducer;

@@ -8,10 +8,10 @@ import {
 } from "../../../Redux/dataSlice";
 import Button from "../../Button/Button";
 import { ButtonWrapper } from "../../Button/Button.styled";
+import { Form } from "../../Common/Form";
 import { Gradientbox } from "../../Common/Gradientbox";
 import { Title } from "../../Common/Title";
 import {
-    Form,
     InputRadio,
     Label,
     Option,
@@ -51,11 +51,10 @@ const ModalContent = () => {
                 <Option value="IDDFS">
                     Iterative Deepening Depth First Search - IDDFS
                 </Option>
-                <Option value="BIDIRECTIONAL">
-                    Bidirectional Search
-                </Option>
-                <Option value="RBFS">RBFS</Option>
-                <Option value="A*">A*</Option>
+                <Option value="BIDIRECTIONAL">Bidirectional Search</Option>
+                <Option value="A">A</Option>
+                <Option value="GBFS">Greedy Best First Search - GBFS</Option>
+                <Option value="RBFS">Recursive Best First Search - RBFS</Option>
             </Select>
             <br />
 

@@ -8,7 +8,6 @@ export const defaultnodes = [
         height: 26,
         position: { x: 262, y: -115 },
         selected: false,
-        type: "default",
         width: 77,
     },
     {
@@ -20,7 +19,6 @@ export const defaultnodes = [
         height: 26,
         position: { x: 346.25, y: -33.25 },
         selected: false,
-        type: "default",
         width: 77,
     },
     {
@@ -32,7 +30,6 @@ export const defaultnodes = [
         height: 26,
         position: { x: 185.25, y: -33.25 },
         selected: false,
-        type: "default",
         width: 77,
     },
     {
@@ -44,7 +41,6 @@ export const defaultnodes = [
         height: 26,
         position: { x: 389.75, y: 37.75 },
         selected: false,
-        type: "default",
         width: 77,
     },
     {
@@ -56,7 +52,6 @@ export const defaultnodes = [
         height: 26,
         position: { x: 129.75, y: 48.75 },
         selected: false,
-        type: "default",
         width: 77,
     },
     {
@@ -68,7 +63,6 @@ export const defaultnodes = [
         height: 26,
         position: { x: 261.75, y: 105.25 },
         selected: false,
-        type: "default",
         width: 77,
     },
 ];
