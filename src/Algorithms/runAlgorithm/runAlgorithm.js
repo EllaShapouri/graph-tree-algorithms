@@ -1,11 +1,14 @@
+import { a } from "../A/A";
 import { bfs } from "../BFS/BFS";
 import { bidirectional } from "../BIDIRECTIONAL/BIDIRECTIONAL";
 import { dfs } from "../DFS/DFS";
 import { dls } from "../DLS/DLS";
+import { gbfs } from "../GBFS/GBFS";
 import { iddfs } from "../IDDFS/IDDFS";
+import { rbfs } from "../RBFS/RBFS";
 import { ucs } from "../UCS/UCS";
 
-export const runAlgorithm = (algorithm, matrix, depth) => {
+export const runAlgorithm = (algorithm, matrix, depth, heuristic) => {
     var resualts = {};
     switch (algorithm) {
         case "BFS":
@@ -28,9 +31,16 @@ export const runAlgorithm = (algorithm, matrix, depth) => {
             resualts = iddfs(matrix, 0);
             break;
         case "BIDIRECTIONAL":
-            resualts = bidirectional(matrix, 0,1);
+            resualts = bidirectional(matrix, 0, 1);
             break;
-        case "A*":
+        case "A":
+            resualts = a(matrix, 0, 1, heuristic);
+            break;
+        case "GBFS":
+            resualts = gbfs(matrix, 0, 1, heuristic);
+            break;
+        case "RBFS":
+            resualts = rbfs(matrix, 0, 1, heuristic);
             break;
 
         default:

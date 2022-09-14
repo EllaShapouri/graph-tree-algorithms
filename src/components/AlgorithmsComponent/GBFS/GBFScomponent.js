@@ -4,10 +4,11 @@ import { DataWrapper } from "../../Common/DataWrapper";
 import { Paragraph } from "../../Common/Paragraph";
 import { Title } from "../../Common/Title";
 
-const UCScomponent = () => {
+const GBFScomponent = () => {
     const [queueResult, setQueueResult] = useState([]);
     const result = useSelector((state) => state.result.result);
     const nodes = useSelector((state) => state.flow.nodes);
+    const heuristic = useSelector((state) => state.flow.heuristic);
     const nodeNames = nodes.map((node) => node.data.label);
     const step = useSelector((state) => state.result.step);
     const lastStep = useSelector((state) => state.result.lastStep);
@@ -16,7 +17,7 @@ const UCScomponent = () => {
     }, [step]);
     return (
         <Fragment>
-            <Title color="purple">● Sorted list by cost :</Title>
+            <Title color="purple">{`● Sorted list by f(x) :`}</Title>
             {queueResult.length >= 0
                 ? queueResult.map((result, index) => (
                       <div key={index}>
@@ -25,8 +26,12 @@ const UCScomponent = () => {
                               <Paragraph>{nodeNames[result.node]}</Paragraph>
                           </DataWrapper>
                           <DataWrapper>
-                              <Title color="purple">Cost :</Title>
-                              <Paragraph>{result.cost}</Paragraph>
+                              <Title color="purple">{`h(x) =`}</Title>
+                              <Paragraph>{heuristic[result.node]}</Paragraph>
+                          </DataWrapper>
+                          <DataWrapper>
+                              <Title color="purple">{`f(x) = h(x) = `}</Title>
+                              <Paragraph>{result.fx}</Paragraph>
                           </DataWrapper>
                           <DataWrapper>
                               <Title color="purple">path :</Title>
@@ -45,4 +50,4 @@ const UCScomponent = () => {
     );
 };
 
-export default UCScomponent;
+export default GBFScomponent;

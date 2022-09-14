@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { FormStyled, Inputstyled, SetButton } from "./LabelForm.Styled";
+import { FormStyled, SetButton } from "./LabelForm.Styled";
 import { useDispatch } from "react-redux";
 import { setDepth } from "../../../../Redux/getFlowSlice";
 import ErrorText from "../../../Common/ErrorText";
 import Notice from "../../../Common/Notice";
+import { InputStyled } from "../../../Common/InputStyled";
 
 const DepthForm = () => {
     const [value, setValue] = useState("");
@@ -35,7 +36,7 @@ const DepthForm = () => {
     return (
         <FormStyled>
             <Notice>Depth : </Notice>
-            <Inputstyled
+            <InputStyled
                 placeholder="just number is valid"
                 onChange={checkNumber}
                 value={value}

@@ -73,16 +73,24 @@ const ModalHeuristic = () => {
         );
         dispatch(setAllEdges(validEdges));
         dispatch(setAllNodes(validNodes));
+        for (let index = 0; index < heuristicList.length; index++) {
+            heuristicList[index] = parseInt(heuristicList[index]);
+        }
         dispatch(setHeuristic(heuristicList));
-        // const matrix = createMatrix(
-        //     validNodes,
-        //     validEdges,
-        //     algorithm.requiredPath
-        // );
-        // const resault = runAlgorithm(algorithm.name, matrix, depth, heuristic);
-        // dispatch(setResult(resault));
-        // // navigate new page
-        // navigate("/showalgorithm");
+        const matrix = createMatrix(
+            validNodes,
+            validEdges,
+            algorithm.requiredPath
+        );
+        const resault = runAlgorithm(
+            algorithm.name,
+            matrix,
+            depth,
+            heuristicList
+        );
+        dispatch(setResult(resault));
+        // navigate new page
+        navigate("/showalgorithm");
     };
 
     return (
