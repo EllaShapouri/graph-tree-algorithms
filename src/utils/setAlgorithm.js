@@ -17,14 +17,7 @@ export const setAlgorithm = (AlgorithmName) => {
                 heuristic: false,
             };
             break;
-        case "RBFS":
-            algorithm = {
-                name: "RBFS",
-                requiredPath: false,
-                targetNode: false,
-                heuristic: false,
-            };
-            break;
+
         case "DFS":
             algorithm = {
                 name: "DFS",
@@ -66,18 +59,18 @@ export const setAlgorithm = (AlgorithmName) => {
             };
             break;
 
-        case "RBFS":
+        case "GBFS":
             algorithm = {
-                name: "RBFS",
+                name: "GBFS",
                 requiredPath: true,
                 targetNode: true,
                 heuristic: true,
             };
             break;
 
-        case "GBFS":
+        case "RBFS":
             algorithm = {
-                name: "GBFS",
+                name: "RBFS",
                 requiredPath: true,
                 targetNode: true,
                 heuristic: true,

@@ -5,6 +5,7 @@ import {
     setAllEdges,
     setAllNodes,
     setHeuristic,
+    SetShowHeuristic,
 } from "../../../Redux/getFlowSlice";
 import Button from "../../Button/Button";
 import { ButtonWrapper } from "../../Button/Button.styled";
@@ -51,6 +52,9 @@ const ModalHeuristic = () => {
             const checkStatus = checkHeuristic();
             setError(!checkStatus);
         }
+        return () => {
+            dispatch(SetShowHeuristic(false));
+        };
     }, [heuristicList]);
 
     const checkHeuristic = () => {
@@ -90,7 +94,7 @@ const ModalHeuristic = () => {
         );
         dispatch(setResult(resault));
         // navigate new page
-        navigate("/showalgorithm");
+        navigate("/showalgorithm", { replace: true });
     };
 
     return (

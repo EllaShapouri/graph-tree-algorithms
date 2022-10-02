@@ -19,8 +19,6 @@ export const runAlgorithm = (algorithm, matrix, depth, heuristic) => {
             // goal node is always node_1
             resualts = ucs(matrix, 0, 1);
             break;
-        case "RBFS":
-            break;
         case "DFS":
             resualts = dfs(matrix, 0);
             break;

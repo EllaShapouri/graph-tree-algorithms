@@ -52,7 +52,7 @@ const ValidateFlow = () => {
         const resault = runAlgorithm(algorithm.name, matrix, depth, []);
         dispatch(setResult(resault));
         // navigate new page
-        navigate("/showalgorithm");
+        navigate("/showalgorithm", { replace: true });
     };
 
     useEffect(() => {

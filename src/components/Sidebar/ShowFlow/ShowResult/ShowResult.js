@@ -5,6 +5,7 @@ import BIDIRECTIONALcomponent from "../../../AlgorithmsComponent/BIDIRECTIONAL/B
 import DFScomponent from "../../../AlgorithmsComponent/DFS/DFScomponent";
 import GBFScomponent from "../../../AlgorithmsComponent/GBFS/GBFScomponent";
 import IDDFScomponent from "../../../AlgorithmsComponent/IDDFS/IDDFScomponent";
+import RBFScomponent from "../../../AlgorithmsComponent/RBFS/RBFScomponent";
 import UCScomponent from "../../../AlgorithmsComponent/UCS/UCScomponent";
 
 const ShowReault = () => {
@@ -18,6 +19,7 @@ const ShowReault = () => {
         BIDIRECTIONAL: <BIDIRECTIONALcomponent />,
         A: <Acomponent />,
         GBFS: <GBFScomponent />,
+        RBFS: <RBFScomponent />,
     };
     return <div>{ENUM_ALGORITHMS[algorithm.name]}</div>;
 };

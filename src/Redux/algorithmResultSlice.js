@@ -11,6 +11,11 @@ export const algorithmResultSlice = createSlice({
     },
     reducers: {
         setResult: (state, action) => {
+            state.result = [];
+            state.nodeQueue = [];
+            state.edgeQueue = [];
+            state.step = -1;
+            state.lastStep = 1;
             var { resultQueue, visitedNodesAllSteps, visitedEdgesAllSteps } =
                 action.payload;
             // nodeQueue contains index of nodes

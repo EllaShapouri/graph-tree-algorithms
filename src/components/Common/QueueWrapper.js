@@ -5,6 +5,7 @@ export const QueueWrapper = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    margin: ${({ margin }) => (margin ? margin : 0)};
     * {
         align-self: flex-start;
     }

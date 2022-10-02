@@ -31,7 +31,7 @@ const ModalContent = () => {
         // store in redux
         dispatch(setSelectedAlgorithm(algorithm));
         dispatch(setSelectedDataStructure(dataStructure));
-        navigate("/getflow");
+        navigate("/getflow", { replace: true });
     };
 
     return (
