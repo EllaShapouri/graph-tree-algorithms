@@ -1,19 +1,28 @@
-export const validateEdges = (edges) => {
-    const validateObject = checkValueExist(edges);
-    return validateObject;
-};
-
-export const checkValueExist = (edges) => {
-    let edgeVaّlue = {
+var validateObject = {};
+export const validateEdges = (edges, requiredPath) => {
+    validateObject = {
         valid: true,
         errorMessage: "",
     };
+    validFlow(edges);
+    if (requiredPath) checkValueExist(edges);
+    return validateObject;
+};
+
+const checkValueExist = (edges) => {
     edges.forEach((edge) => {
         if (!edge.label)
-            edgeVaّlue = {
+            validateObject = {
                 valid: false,
                 errorMessage: "all edges must have a value",
             };
     });
-    return edgeVaّlue;
+};
+
+const validFlow = (edges) => {
+    if (edges.length === 0)
+        validateObject = {
+            valid: false,
+            errorMessage: "Flow is not valid",
+        };
 };

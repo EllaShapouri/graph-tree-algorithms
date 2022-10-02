@@ -1,6 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { setAlgorithm } from "./../utils/setAlgorithm";
 
+var initialNodeExample = {
+    id: "node_0",
+    type: "default",
+    data: { label: "root node", startNode: true },
+    className: "StartNode",
+    position: { x: 250, y: 5 },
+};
+
+var initialGoalNodeExample = {
+    id: "node_1",
+    type: "default",
+    data: { label: "goal", startNode: true },
+    className: "GoalNode",
+    position: { x: 250, y: 50 },
+};
+
 export const dataSlice = createSlice({
     name: "data",
     initialState: {
@@ -18,23 +34,24 @@ export const dataSlice = createSlice({
             if (action.payload === "tree") {
                 state.initialNode = [
                     {
-                        id: "node_0",
+                        ...initialNodeExample,
                         type: "input",
                         data: { label: "root node", startNode: true },
-                        className: "StartNode",
-                        position: { x: 250, y: 5 },
                     },
                 ];
+                if (state.algorithm.targetNode) {
+                    state.initialNode.push(initialGoalNodeExample);
+                }
             } else if (action.payload === "graph") {
                 state.initialNode = [
                     {
-                        id: "node_0",
-                        type: "default",
+                        ...initialNodeExample,
                         data: { label: "start node", startNode: true },
-                        className: "StartNode",
-                        position: { x: 250, y: 5 },
                     },
                 ];
+                if (state.algorithm.targetNode) {
+                    state.initialNode.push(initialGoalNodeExample);
+                }
             } else {
                 state.initialNode = [];
             }

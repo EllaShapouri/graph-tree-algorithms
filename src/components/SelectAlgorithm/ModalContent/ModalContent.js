@@ -8,10 +8,10 @@ import {
 } from "../../../Redux/dataSlice";
 import Button from "../../Button/Button";
 import { ButtonWrapper } from "../../Button/Button.styled";
+import { Form } from "../../Common/Form";
 import { Gradientbox } from "../../Common/Gradientbox";
 import { Title } from "../../Common/Title";
 import {
-    Form,
     InputRadio,
     Label,
     Option,
@@ -31,7 +31,7 @@ const ModalContent = () => {
         // store in redux
         dispatch(setSelectedAlgorithm(algorithm));
         dispatch(setSelectedDataStructure(dataStructure));
-        navigate("/getflow");
+        navigate("/getflow", { replace: true });
     };
 
     return (
@@ -45,10 +45,16 @@ const ModalContent = () => {
                 <Option value="BFS" defaultValue>
                     Breadth First Search - BFS
                 </Option>
-                <Option value="RBFS">RBFS</Option>
                 <Option value="UCS">Uniform Cost Search - UCS</Option>
-                <Option value="DFS">Depth-first Search</Option>
-                <Option value="A*">A*</Option>
+                <Option value="DFS">Depth First Search - DFS</Option>
+                <Option value="DLS">Depth Limited Search - DLS</Option>
+                <Option value="IDDFS">
+                    Iterative Deepening Depth First Search - IDDFS
+                </Option>
+                <Option value="BIDIRECTIONAL">Bidirectional Search</Option>
+                <Option value="A">A</Option>
+                <Option value="GBFS">Greedy Best First Search - GBFS</Option>
+                <Option value="RBFS">Recursive Best First Search - RBFS</Option>
             </Select>
             <br />
 

@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import DnDFlow from "../pages/Graph/GetGraph";
-
+import GetGraph from "../pages/Graph/GetGraph";
+import ShowAlgorithm from "../pages/ShowAlgorithm/ShowAlgorithm";
 import Homepage from "./../pages/Homepage/Homepage";
 
 function ShowAlgorithmApp() {
@@ -10,7 +10,8 @@ function ShowAlgorithmApp() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Homepage />} />
-                    <Route path="/getflow" element={<DnDFlow />} />
+                    <Route path="/getflow" element={<GetGraph />} />
+                    <Route path="/showalgorithm" element={<ShowAlgorithm />} />
                 </Routes>
             </BrowserRouter>
         </Fragment>

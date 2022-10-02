@@ -1,12 +1,14 @@
 import { useSelector } from "react-redux";
 import { Paragraph } from "./../../Common/Paragraph";
 import { Title } from "./../../Common/Title";
-import { DataWrapper } from "./DataAlgorithm.styled";
-import Notice from "./../../Common/Notice";
+import { DataWrapper } from "../../Common/DataWrapper";
+import { useLocation } from "react-router-dom";
+import Notices from "./Notices/Notices";
 
 const DataAlgorithm = () => {
     const Algorithm = useSelector((state) => state.data.algorithm);
     const dataStructure = useSelector((state) => state.data.dataStructure);
+    const location = useLocation();
     return (
         <div>
             <DataWrapper>
@@ -18,10 +20,11 @@ const DataAlgorithm = () => {
                 <Paragraph>{Algorithm.name}</Paragraph>
             </DataWrapper>
 
-            <Notice>All nodes must have unique names</Notice>
-            {Algorithm.requiredPath ? (
-                <Notice>All edges must have a value</Notice>
-            ) : null}
+            {
+                (location.pathname = "/showalgorithm" ? null : (
+                    <Notices requiredPath={Algorithm.requiredPath} />
+                ))
+            }
         </div>
     );
 };

@@ -24,6 +24,6 @@ export const ButtonWrapper = styled.div`
     margin: ${({ margin }) => margin};
     & > div {
         border-radius: 1em !important;
-        margin: 0.5em 1em;
+        margin: 0.5em 0;
     }
 `;
