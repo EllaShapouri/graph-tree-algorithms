@@ -19,7 +19,7 @@ export const Gradientbox = styled.div`
     overflow: hidden;
 
     svg {
-        width: 60px;
+        width: 45px;
         position: relative;
         z-index: 10;
     }

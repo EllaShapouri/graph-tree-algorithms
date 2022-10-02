@@ -15,6 +15,9 @@ export const StepItem = styled.div`
     p {
         text-align: center;
     }
+    svg path {
+        fill: white;
+    }
     @media (max-width: 768px) {
         flex-basis: 100%;
         margin-bottom: 3em;
@@ -43,7 +46,7 @@ export const StepsWrapper = styled.section`
 `;
 
 export const GuideLine = styled.img`
-    width: 100%;
+    width: 15%;
     max-width: 200px;
     flex-basis: 15%;
     align-self: flex-start;
@@ -55,7 +58,7 @@ export const GuideLine = styled.img`
 
 export const GuideLine2 = styled.img`
     transform: scale(1, -1);
-    width: 100%;
+    width: 15%;
     max-width: 200px;
     flex-basis: 15%;
     align-self: flex-start;

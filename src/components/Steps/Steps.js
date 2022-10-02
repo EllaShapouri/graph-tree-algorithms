@@ -1,9 +1,11 @@
-import {Gradientbox} from "../Common/Gradientbox";
-import {Paragraph} from "../Common/Paragraph";
-import {Title} from "../Common/Title";
-import { GuideLine,GuideLine2, StepItem, StepsWrapper } from "./steps.styled";
+import { Gradientbox } from "../Common/Gradientbox";
+import { Paragraph } from "../Common/Paragraph";
+import { Title } from "../Common/Title";
+import { GuideLine, GuideLine2, StepItem, StepsWrapper } from "./steps.styled";
 
 import { ReactComponent as GraphShape } from "./../../assets/images/graph.svg";
+import { ReactComponent as ListShape } from "./../../assets/images/list.svg";
+import { ReactComponent as ControlShape } from "./../../assets/images/control.svg";
 import Guide from "./../../assets/images/guide-line.svg";
 
 const Steps = () => {
@@ -11,12 +13,14 @@ const Steps = () => {
         <StepsWrapper>
             <StepItem>
                 <Gradientbox width="90px" height="90px">
-                    <GraphShape />
+                    <ListShape />
                 </Gradientbox>
-                <Title maxWidth="10em">Chose your Algorithm and data structure</Title>
+                <Title maxWidth="10em">
+                    Chose your Algorithm and data structure
+                </Title>
                 <Paragraph fontSize=".9em">
-                    It is a long established fact that a reader will be
-                    distracted
+                    you can choose between 9 AI search algorithms and graph or
+                    tree data structure
                 </Paragraph>
             </StepItem>
 
@@ -30,9 +34,8 @@ const Steps = () => {
                     Enter your Data graph or Data Tree
                 </Title>
                 <Paragraph fontSize=".9em">
-                    It is a long established fact that a reader will be
-                    distracted by the readable content of a page when looking at
-                    its layout.
+                    create your own graph or tree with drag and drop nodes and
+                    paths
                 </Paragraph>
             </StepItem>
 
@@ -40,13 +43,12 @@ const Steps = () => {
 
             <StepItem>
                 <Gradientbox width="90px" height="90px">
-                    <GraphShape />
+                    <ControlShape />
                 </Gradientbox>
                 <Title>Learn how It works</Title>
                 <Paragraph fontSize=".9em">
-                    It is a long established fact that a reader will be
-                    distracted by the readable content of a page when looking at
-                    its layout.
+                    you can see step by step how algorithm works on yout data
+                    with other imformations
                 </Paragraph>
             </StepItem>
         </StepsWrapper>
