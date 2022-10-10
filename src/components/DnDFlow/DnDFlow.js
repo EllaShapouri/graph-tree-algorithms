@@ -18,9 +18,6 @@ import {
 import { DnDFlowStyled, DnDWrapper, FlowWrapper } from "./DnDFlow.styled";
 import { useNavigate } from "react-router-dom";
 
-import { defaultedges } from "./../../utils/edges";
-import { defaultnodes } from "../../utils/nodes";
-
 const DnDFlow = () => {
     const reactFlowWrapper = useRef(null);
     const selectedElement = useSelector((state) => state.flow.selectedElement);
@@ -33,8 +30,8 @@ const DnDFlow = () => {
 
     const navigate = useNavigate();
 
-    const [nodes, setNodes, onNodesChange] = useNodesState(defaultnodes);
-    const [edges, setEdges, onEdgesChange] = useEdgesState(defaultedges);
+    const [nodes, setNodes, onNodesChange] = useNodesState(initialNode);
+    const [edges, setEdges, onEdgesChange] = useEdgesState([]);
     const [reactFlowInstance, setReactFlowInstance] = useState(null);
 
     const onNodeClick = (event, node) => {

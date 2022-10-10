@@ -1,4 +1,3 @@
-var frontierQueue = [];
 var resultQueue = [];
 // A queue to manage the visited nodes in each step
 var visitedNodesAllSteps = [];

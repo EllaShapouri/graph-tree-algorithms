@@ -3,7 +3,6 @@ export const ucs = function (graph, start, goal) {
     var frontier = { node: start, cost: 0, path: [] };
     var frontierQueue = [];
     var resultQueue = [];
-    var lastNode = 0;
 
     // A queue to manage the visited nodes in each step
     var visitedNodesAllSteps = [];
@@ -54,6 +53,5 @@ export const ucs = function (graph, start, goal) {
         visitedNodesOneStep = [];
         visitedEdgesAllSteps.push([...visitedEdgesOneStep]);
         visitedEdgesOneStep = [];
-        lastNode = node;
     }
 };
