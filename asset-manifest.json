@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/graph-tree-algorithms/static/css/main.d33dd536.css",
-    "main.js": "/graph-tree-algorithms/static/js/main.adc54b65.js",
-    "static/media/Inter-Bold.ttf": "/graph-tree-algorithms/static/media/Inter-Bold.1eca2d329458b92342aa.ttf",
-    "static/media/Inter-Medium.ttf": "/graph-tree-algorithms/static/media/Inter-Medium.4ebf1acf62f447ea2f0d.ttf",
-    "static/media/Inter-Regular.ttf": "/graph-tree-algorithms/static/media/Inter-Regular.a3e5baa244e35d0f891d.ttf",
-    "static/media/logo.svg": "/graph-tree-algorithms/static/media/logo.fb6d087cebd00741eaea6f2c3b9e86c3.svg",
-    "static/media/guide-line.svg": "/graph-tree-algorithms/static/media/guide-line.4c96931fdaf3bad634427a0f841a2d91.svg",
-    "static/media/control.svg": "/graph-tree-algorithms/static/media/control.174d1658b0b5cbbe0e7b3843d0bb2cf4.svg",
-    "static/media/list.svg": "/graph-tree-algorithms/static/media/list.8a326a24f79663f53b2db34052ce6319.svg",
-    "static/media/info.svg": "/graph-tree-algorithms/static/media/info.31056c3075d150b17258a534ebac28a6.svg",
-    "index.html": "/graph-tree-algorithms/index.html",
-    "static/media/graph.svg": "/graph-tree-algorithms/static/media/graph.6fd56fbb24afa0ec0050b2da04d19168.svg",
-    "main.d33dd536.css.map": "/graph-tree-algorithms/static/css/main.d33dd536.css.map",
-    "main.adc54b65.js.map": "/graph-tree-algorithms/static/js/main.adc54b65.js.map"
+    "main.css": "./static/css/main.d33dd536.css",
+    "main.js": "./static/js/main.7b27a94c.js",
+    "static/media/Inter-Bold.ttf": "./static/media/Inter-Bold.1eca2d329458b92342aa.ttf",
+    "static/media/Inter-Medium.ttf": "./static/media/Inter-Medium.4ebf1acf62f447ea2f0d.ttf",
+    "static/media/Inter-Regular.ttf": "./static/media/Inter-Regular.a3e5baa244e35d0f891d.ttf",
+    "static/media/logo.svg": "./static/media/logo.fb6d087cebd00741eaea6f2c3b9e86c3.svg",
+    "static/media/guide-line.svg": "./static/media/guide-line.4c96931fdaf3bad634427a0f841a2d91.svg",
+    "static/media/control.svg": "./static/media/control.174d1658b0b5cbbe0e7b3843d0bb2cf4.svg",
+    "static/media/list.svg": "./static/media/list.8a326a24f79663f53b2db34052ce6319.svg",
+    "static/media/info.svg": "./static/media/info.31056c3075d150b17258a534ebac28a6.svg",
+    "static/media/graph.svg": "./static/media/graph.6fd56fbb24afa0ec0050b2da04d19168.svg",
+    "index.html": "./index.html",
+    "main.d33dd536.css.map": "./static/css/main.d33dd536.css.map",
+    "main.7b27a94c.js.map": "./static/js/main.7b27a94c.js.map"
   },
   "entrypoints": [
     "static/css/main.d33dd536.css",
-    "static/js/main.adc54b65.js"
+    "static/js/main.7b27a94c.js"
   ]
 }
