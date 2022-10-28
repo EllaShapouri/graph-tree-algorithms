@@ -19,6 +19,7 @@ import { InputsWrapper, InputWrapper } from "./ModalHeuristic.styled";
 import { setResult } from "../../../Redux/algorithmResultSlice";
 import { runAlgorithm } from "../../../Algorithms/runAlgorithm/runAlgorithm";
 import { createMatrix } from "../../../utils/matrix";
+import { createMatrixHeuristics } from "../../../utils/matrixHeuristic";
 
 const ModalHeuristic = () => {
     const nodes = useNodes();
@@ -26,66 +27,107 @@ const ModalHeuristic = () => {
     const algorithm = useSelector((state) => state.data.algorithm);
     const depth = useSelector((state) => state.flow.depth);
     const [error, setError] = useState();
-    const [heuristicList, setHeuristicList] = useState([]);
+    // const [heuristicList, setHeuristicList] = useState([]);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    useEffect(() => {
+        return () => {
+            dispatch(SetShowHeuristic(false));
+        };
+    }, []);
+
     const handleSubmit = (e) => {
-        var getHeuristic = [];
         e.preventDefault();
+        var getHeuristic = [];
         for (let index = 0; index < nodes.length; index++) {
             var currentValue = document.querySelector(
                 `#heuristic_${index}`
             ).value;
             getHeuristic.push(currentValue);
         }
-        setHeuristicList([...getHeuristic]);
+        check(getHeuristic);
     };
 
-    useEffect(() => {
-        if (error === false) run();
-    }, [error]);
-
-    useEffect(() => {
-        if (heuristicList.length !== 0) {
-            const checkStatus = checkHeuristic();
-            setError(!checkStatus);
-        }
-        return () => {
-            dispatch(SetShowHeuristic(false));
-        };
-    }, [heuristicList]);
-
-    const checkHeuristic = () => {
-        if (heuristicList.length !== 0) {
-            for (let index = 0; index < heuristicList.length; index++) {
-                var value = heuristicList[index];
-                if (!value.trim()) return false;
-                else if (!/^[0-9]+$/.test(value)) return false;
-            }
-            return true;
-        }
+    const check = (getHeuristic) => {
+        if (getHeuristic.length !== 0) {
+            const checkStatus = checkHeuristicOne(getHeuristic);
+            console.log("checkStatus", checkStatus);
+            if (checkStatus) {
+                const { status, heuristicList } =
+                    checkHeuristicTow(getHeuristic);
+                console.log("status", status);
+                if (status) run(heuristicList);
+                else setError(!status);
+            } else setError(!checkStatus);
+        } else setError(true);
     };
 
-    const run = () => {
+    const checkHeuristicOne = (getHeuristic) => {
+        for (let index = 0; index < getHeuristic.length; index++) {
+            var value = getHeuristic[index];
+            if (!value.trim()) return false;
+            else if (!/^[0-9]+$/.test(value)) return false;
+        }
+        return true;
+    };
+
+    const checkHeuristicTow = (getHeuristic) => {
         const validNodes = Object.freeze(nodes).map(
             ({ selected, ...proprties }) => proprties
         );
         const validEdges = Object.freeze(edges).map(
             ({ selected, ...proprties }) => proprties
         );
-        dispatch(setAllEdges(validEdges));
-        dispatch(setAllNodes(validNodes));
-        for (let index = 0; index < heuristicList.length; index++) {
-            heuristicList[index] = parseInt(heuristicList[index]);
+
+        const matrix = createMatrixHeuristics(
+            validNodes,
+            validEdges,
+            algorithm.requiredPath
+        );
+        console.log("matrix", matrix);
+        var status = false;
+        var heuristicList = [];
+        for (let index = 0; index < getHeuristic.length; index++) {
+            heuristicList[index] = parseInt(getHeuristic[index]);
         }
-        dispatch(setHeuristic(heuristicList));
+        // check heuristics
+        for (let i = 0; i < heuristicList.length; i++) {
+            for (let j = 0; j < matrix[i].length; j++) {
+                if (matrix[i][j].value !== -1) {
+                    if (
+                        matrix[i][j].value + heuristicList[j] >
+                        heuristicList[i]
+                    ) {
+                        status = true;
+                    } else {
+                        console.log("in here", i, j);
+                        status = false;
+                        return { status, heuristicList };
+                    }
+                }
+            }
+        }
+        return { status, heuristicList };
+    };
+
+    const run = (heuristicList) => {
+        const validNodes = Object.freeze(nodes).map(
+            ({ selected, ...proprties }) => proprties
+        );
+        const validEdges = Object.freeze(edges).map(
+            ({ selected, ...proprties }) => proprties
+        );
+
         const matrix = createMatrix(
             validNodes,
             validEdges,
             algorithm.requiredPath
         );
+        dispatch(setAllNodes(validNodes));
+        dispatch(setAllEdges(validEdges));
+        dispatch(setHeuristic(heuristicList));
         const resault = runAlgorithm(
             algorithm.name,
             matrix,
@@ -109,7 +151,9 @@ const ModalHeuristic = () => {
                 ))}
             </InputsWrapper>
             {error ? (
-                <ErrorText width="9em">Just number is valid !</ErrorText>
+                <ErrorText width="9em">
+                    Just number is valid and heuristics must be true !
+                </ErrorText>
             ) : null}
             <ButtonWrapper margin="0">
                 <Gradientbox width="150px" height="auto">
