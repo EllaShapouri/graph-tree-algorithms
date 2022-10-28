@@ -52,7 +52,7 @@ const ModalContent = () => {
                     Iterative Deepening Depth First Search - IDDFS
                 </Option>
                 <Option value="BIDIRECTIONAL">Bidirectional Search</Option>
-                <Option value="A">A</Option>
+                <Option value="A">A*</Option>
                 <Option value="GBFS">Greedy Best First Search - GBFS</Option>
                 <Option value="RBFS">Recursive Best First Search - RBFS</Option>
             </Select>
