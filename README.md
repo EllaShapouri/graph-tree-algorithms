@@ -3,9 +3,9 @@
 This project is an educational tool for teaching search algorithms in artificial intelligence step by step.
 This program has three stages : 
 
-1. Select algorithm betweeb these algorithms : A*,RBFS, Breadth First Search, Uniform Cost Search, Depth First Search, Depth Limited Search, Iterative Deepening Depth First Search ,Bidirectional Search and  Greedy Best First Search and select data structure between graph and tree.
-2. Create your own graph or tree with drag and drop nodes and paths
-3. You can see step by step how algorithm works on your data with other informations
+1. Select the algorithm between these: A*, RBFS, Breadth First Search, Uniform Cost Search, Depth First Search, Depth Limited Search, Iterative Deepening Depth First Search, Bidirectional Search, and  Greedy Best First Search and select data structure between graph and tree.
+2. Create your own graph or tree with drag-and-drop nodes and paths
+3. You can see step by step how the algorithm works on your data with other information
 
 ## 🖥️ Demo
 
