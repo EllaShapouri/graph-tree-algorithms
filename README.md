@@ -20,7 +20,7 @@ React JS, styled-component, React Flow, Redux, ...
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/EllaShapouri/graph-tree-algorithms.git
 ```
 
 Go to the project directory and install dependencies
