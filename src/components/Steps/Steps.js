@@ -47,8 +47,8 @@ const Steps = () => {
                 </Gradientbox>
                 <Title>Learn how It works</Title>
                 <Paragraph fontSize=".9em">
-                    you can see step by step how algorithm works on yout data
-                    with other imformations
+                    you can see step by step how algorithm works on your data
+                    with other information
                 </Paragraph>
             </StepItem>
         </StepsWrapper>
