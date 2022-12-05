@@ -10,6 +10,7 @@ const theme = {
         startNode: "#E8E3F0",
         goalNode: "#E3F0EE",
         error: "#db1414",
+        dark: "#535057"
     },
 };
 

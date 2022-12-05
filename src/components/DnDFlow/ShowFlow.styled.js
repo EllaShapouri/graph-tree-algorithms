@@ -57,11 +57,28 @@ export const ShowFlowStyled = styled.div`
         stroke-width: 1.2;
     }
 
+    .react-flow__edge.checked path {
+        stroke-dasharray: 0;
+        stroke: ${({ theme }) => theme.colors.dark} !important;
+        stroke-width: 1;
+    }
+
     .react-flow__node.visited {
         border: 0.1em solid ${({ theme }) => theme.colors.secondary};
         border-left-width: 0.8em;
         .react-flow__handle {
             background-color: ${({ theme }) => theme.colors.primary} !important;
+        }
+        .react-flow__handle-bottom,
+        .react-flow__handle-top {
+            left: 45.5%;
+        }
+    }
+    .react-flow__node.checked {
+        border: 0.1em solid ${({ theme }) => theme.colors.dark};
+        border-left-width: 0.8em;
+        .react-flow__handle {
+            background-color: ${({ theme }) => theme.colors.dark} !important;
         }
         .react-flow__handle-bottom,
         .react-flow__handle-top {
