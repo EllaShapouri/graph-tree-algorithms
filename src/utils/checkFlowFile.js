@@ -97,7 +97,6 @@ const createFlow = (nodes, edges) => {
         .filter((element) => {
             return element !== undefined;
         });
-    console.log(newEdges);
     return { newNodes, newEdges };
 };
 

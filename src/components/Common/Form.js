@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Form = styled.form`
-    padding: 2em;
     width: 100%;
     h3 {
         text-align: left;

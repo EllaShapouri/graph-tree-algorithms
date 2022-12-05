@@ -22,5 +22,5 @@ export const ButtonInputFile = styled.div`
     padding: 0 !important;
     background: transparent;
     border: 0;
-    margin-top: 2em;
+    margin-top: 1.5em;
 `;

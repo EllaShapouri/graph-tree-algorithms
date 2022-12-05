@@ -16,3 +16,8 @@ export const StyledModal = Modal.styled`
     -webkit-box-shadow: 0px 0px 15px -4px rgb(181, 120, 238);
     box-shadow: 0px 0px 15px -4px rgb(181, 120, 238);
 `;
+
+export const ModalWrapper = styled.div`
+    width: 100%;
+    margin: 2em;
+`;

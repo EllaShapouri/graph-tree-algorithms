@@ -13,9 +13,8 @@ export const Label = styled.label`
 
 export const InputRadio = styled.input`
     margin-right: 0.3em;
+    margin-top: 1em;
     cursor: pointer;
-    @media (max-width: 768px) {
-    }
 `;
 
 export const RadioWrapper = styled.div`
