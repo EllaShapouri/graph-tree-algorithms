@@ -17,7 +17,7 @@ export const ShowFlowStyled = styled.div`
         text-align: center;
         max-width: 8em;
         cursor: auto !important;
-
+        transition: all .2s;
         .react-flow__handle {
             width: 6px;
             height: 6px;
@@ -45,6 +45,10 @@ export const ShowFlowStyled = styled.div`
 
     .react-flow__controls button[title="toggle interactivity"] {
         display: none;
+    }
+
+    .react-flow__edge{
+        transition: all .2s;
     }
 
     .react-flow__edge path {
