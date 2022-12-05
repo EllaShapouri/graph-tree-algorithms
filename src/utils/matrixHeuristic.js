@@ -1,5 +1,5 @@
 var matrix = [];
-export const createMatrixHeuristics = (nodes, edges, requiredPath) => {
+export const createMatrixHeuristics = (nodes, edges) => {
     // dictionary for node id and node index
     var nodeId = {};
     // create matrix of flow
@@ -17,19 +17,12 @@ export const createMatrixHeuristics = (nodes, edges, requiredPath) => {
         const indexNodeSource = nodeId[edge.source];
         const indexNodeTarget = nodeId[edge.target];
         var edgeValue = {};
-        if (requiredPath) {
-            edgeValue = {
-                value: parseInt(edge.label),
-                id: edge.id,
-            };
-            setMatrixValue(indexNodeSource, indexNodeTarget, edgeValue);
-        } else {
-            edgeValue = {
-                value: 1,
-                id: edge.id,
-            };
-            setMatrixValue(indexNodeSource, indexNodeTarget, edgeValue);
-        }
+
+        edgeValue = {
+            value: parseInt(edge.label),
+            id: edge.id,
+        };
+        setMatrixValue(indexNodeSource, indexNodeTarget, edgeValue);
     });
     return matrix;
 };
