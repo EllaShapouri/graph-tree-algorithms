@@ -4,7 +4,9 @@ import Modal from "styled-react-modal";
 export const StyledModal = Modal.styled`
     width: 20rem;
     height: auto;
-    max-height: 75vh;
+    max-height : 100vh;
+    overflow-y : auto;
+    overflow-x : hidden;
     display: flex;
     transition : .3s;
     border : .1em solid ${({ theme }) => theme.colors.secondary};
