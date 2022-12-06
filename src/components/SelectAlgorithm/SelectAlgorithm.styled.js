@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Modal from "styled-react-modal";
 
 export const ButtonWrapper = styled.div`
     display: flex;

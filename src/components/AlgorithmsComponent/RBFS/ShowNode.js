@@ -3,7 +3,6 @@ import { Paragraph } from "../../Common/Paragraph";
 import { Title } from "../../Common/Title";
 
 const ShowNode = ({nodeNames, heuristic, nodeObj}) => {
-    console.log(nodeObj);
     if (nodeObj === undefined) return null;
     const { node, fx, gx } = nodeObj;
     return (

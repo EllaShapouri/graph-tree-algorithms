@@ -44,11 +44,24 @@ const ShowFlow = () => {
             if (result[step].length > 0) {
                 const changedNodes = nodeQueue[step];
                 // set visited className to visited edges and nodes
+                for (let i = 0; i < nodes.length; i++) {
+                    if (nodes[i].className.includes("visited")) {
+                        setClassNamesNodes("checked", i);
+                    }
+                }
                 changedNodes.forEach((changedNode) => {
                     setClassNamesNodes("visited", changedNode);
                 });
                 if (step > 0 && step <= lastStep) {
                     const changedEdges = edgeQueue[step - 1];
+                    for (let j = 0; j < edges.length; j++) {
+                        const edge = edges[j];
+                        if (
+                            edge.className &&
+                            edge.className.includes("visited")
+                        )
+                            setClassNamesEdges("checked", edge.id);
+                    }
                     changedEdges.forEach((changedEdge) => {
                         setClassNamesEdges("visited", changedEdge);
                     });

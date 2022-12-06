@@ -1,66 +1,44 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { createInitialEdges, createInitialNodes } from "../utils/initialFlow";
 import { setAlgorithm } from "./../utils/setAlgorithm";
-
-var initialNodeExample = {
-    id: "node_0",
-    type: "default",
-    data: { label: "root node", startNode: true },
-    className: "StartNode",
-    position: { x: 250, y: 5 },
-};
-
-var initialGoalNodeExample = {
-    id: "node_1",
-    type: "default",
-    data: { label: "goal", startNode: true },
-    className: "GoalNode",
-    position: { x: 250, y: 50 },
-};
 
 export const dataSlice = createSlice({
     name: "data",
     initialState: {
         dataStructure: "",
         algorithm: {},
-        initialNode: [],
+        initialNodes: [],
+        initialEdges: [],
+        create: "draw",
+        fileFlowNodes: [],
+        fileFlowEdges: [],
     },
     reducers: {
-        setSelectedAlgorithm: (state, action) => {
-            state.algorithm = setAlgorithm(action.payload);
+        setFileFlow: (state, action) => {
+            state.fileFlowNodes = action.payload.newNodes;
+            state.fileFlowEdges = action.payload.newEdges;
         },
 
-        setSelectedDataStructure: (state, action) => {
-            state.dataStructure = action.payload;
-            if (action.payload === "tree") {
-                state.initialNode = [
-                    {
-                        ...initialNodeExample,
-                        type: "input",
-                        data: { label: "root node", startNode: true },
-                    },
-                ];
-                if (state.algorithm.targetNode) {
-                    state.initialNode.push(initialGoalNodeExample);
-                }
-            } else if (action.payload === "graph") {
-                state.initialNode = [
-                    {
-                        ...initialNodeExample,
-                        data: { label: "start node", startNode: true },
-                    },
-                ];
-                if (state.algorithm.targetNode) {
-                    state.initialNode.push(initialGoalNodeExample);
-                }
-            } else {
-                state.initialNode = [];
-            }
+        setSelectedData: (state, action) => {
+            state.create = action.payload.create;
+            state.algorithm = setAlgorithm(action.payload.algorithm);
+            state.dataStructure = action.payload.dataStructure;
+            state.initialNodes = createInitialNodes(
+                state.create,
+                state.dataStructure,
+                state.fileFlowNodes
+            );
+            state.initialEdges = createInitialEdges(
+                state.create,
+                state.fileFlowEdges
+            );
+            state.fileFlowNodes = [];
+            state.fileFlowEdges = [];
         },
     },
 });
 
 // Action creators are generated for each case reducer function
-export const { setSelectedAlgorithm, setSelectedDataStructure } =
-    dataSlice.actions;
+export const { setSelectedData, setFileFlow } = dataSlice.actions;
 
 export default dataSlice.reducer;

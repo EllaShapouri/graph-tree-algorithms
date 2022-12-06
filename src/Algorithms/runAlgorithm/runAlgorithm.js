@@ -13,20 +13,20 @@ export const runAlgorithm = (algorithm, matrix, depth, heuristic) => {
     switch (algorithm) {
         case "BFS":
             // start node is always node_0
-            results = bfs(matrix, 0);
+            results = bfs(matrix, 0, 1);
             break;
         case "UCS":
             // goal node is always node_1
             results = ucs(matrix, 0, 1);
             break;
         case "DFS":
-            results = dfs(matrix, 0);
+            results = dfs(matrix, 0, 1);
             break;
         case "DLS":
-            results = dls(matrix, 0, depth);
+            results = dls(matrix, 0, 1, depth);
             break;
         case "IDDFS":
-            results = iddfs(matrix, 0);
+            results = iddfs(matrix, 0, 1);
             break;
         case "BIDIRECTIONAL":
             results = bidirectional(matrix, 0, 1);
