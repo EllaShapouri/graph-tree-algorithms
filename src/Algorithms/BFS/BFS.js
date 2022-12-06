@@ -22,9 +22,7 @@ export const bfs = function (graph, start, goal) {
     while (queue.length > 0) {
         // The shift() method removes the first element from an array and returns that removed element.
         var node = queue.shift();
-        if (node === goal) {
-            return { resultQueue, visitedNodesAllSteps, visitedEdgesAllSteps };
-        }
+
         //...for all neighboring nodes that haven't been visited yet....
         for (var i = 1; i < graph[node].length; i++) {
             if (graph[node][i].value != -1 && !visited[i]) {
@@ -34,8 +32,21 @@ export const bfs = function (graph, start, goal) {
                 // Visit it, set the distance and add it to the queue
                 visited[i] = true;
                 queue.push(i);
+                if (i === goal) {
+                    resultQueue.push(queueCopyEachStep(queue));
+                    visitedNodesAllSteps.push(visitedNodesOneStep);
+                    visitedNodesOneStep = [];
+                    visitedEdgesAllSteps.push(visitedEdgesOneStep);
+                    visitedEdgesOneStep = [];
+                    return {
+                        resultQueue,
+                        visitedNodesAllSteps,
+                        visitedEdgesAllSteps,
+                    };
+                }
             }
         }
+
         resultQueue.push(queueCopyEachStep(queue));
         visitedNodesAllSteps.push(visitedNodesOneStep);
         visitedNodesOneStep = [];
