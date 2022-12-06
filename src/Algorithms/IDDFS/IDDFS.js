@@ -14,7 +14,7 @@ var visitedEdgesOneStep = [];
 
 var depth = 0;
 
-const dls = (graph, start, limit) => {
+const dls = (graph, start,goal, limit) => {
     graphFlow = [...graph];
     stack.push(start);
     resultQueue.push([...stack]);
@@ -29,6 +29,12 @@ const dls = (graph, start, limit) => {
         visitedEdgesOneStep = [];
         visitedNodesOneStep = [];
         visitedNodesOneStep.push(curNode);
+        if (curNode === goal) {
+            visitedEdgesAllSteps.push([...visitedEdgesOneStep]);
+            visitedNodesAllSteps.push([...visitedNodesOneStep]);
+            resultQueue.push([...stack]);
+            return true;
+        }
         let adjacentNode = getFirstUnvistedNode(curNode, limit);
         if (adjacentNode !== false) {
             stack.push(adjacentNode);
@@ -60,13 +66,13 @@ const getFirstUnvistedNode = (curNode, limit) => {
 
 const allNodesVisited = () => visited.every((element) => element === true);
 
-export const iddfs = (graph, start) => {
+export const iddfs = (graph, start,goal) => {
     // Repeatedly depth-limit search till the
     // maximum depth.
     var status = false;
     var iterativeDepth = 0;
     while (!status) {
-        status = dls(graph, start, iterativeDepth);
+        status = dls(graph, start,goal, iterativeDepth);
         visitedEdgesAllSteps.push([]);
         visitedNodesAllSteps.push([]);
         iterativeDepth++;

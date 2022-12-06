@@ -12,17 +12,23 @@ var visitedNodesOneStep = [];
 var visitedEdgesAllSteps = [];
 var visitedEdgesOneStep = [];
 
-export const dfs = (graph, start) => {
+export const dfs = (graph, start, goal) => {
     graphFlow = [...graph];
     stack.push(start);
     resultQueue.push([...stack]);
 
-    while (stack.length != 0) {
+    while (stack.length !== 0) {
         var curNode = stack[stack.length - 1];
         visited[curNode] = true;
         visitedEdgesOneStep = [];
         visitedNodesOneStep = [];
         visitedNodesOneStep.push(curNode);
+        if (curNode === goal) {
+            visitedEdgesAllSteps.push([...visitedEdgesOneStep]);
+            visitedNodesAllSteps.push([...visitedNodesOneStep]);
+            resultQueue.push([...stack]);
+            return { resultQueue, visitedNodesAllSteps, visitedEdgesAllSteps };
+        }
         let adjacentNode = getFirstUnvistedNode(curNode);
         if (adjacentNode !== false) {
             stack.push(adjacentNode);

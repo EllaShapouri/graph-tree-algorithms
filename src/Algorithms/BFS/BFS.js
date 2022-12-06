@@ -1,4 +1,4 @@
-export const bfs = function (graph, start) {
+export const bfs = function (graph, start, goal) {
     //A Queue to manage the nodes that have yet to be visited
     var queue = [];
     var resultQueue = [];
@@ -22,6 +22,9 @@ export const bfs = function (graph, start) {
     while (queue.length > 0) {
         // The shift() method removes the first element from an array and returns that removed element.
         var node = queue.shift();
+        if (node === goal) {
+            return { resultQueue, visitedNodesAllSteps, visitedEdgesAllSteps };
+        }
         //...for all neighboring nodes that haven't been visited yet....
         for (var i = 1; i < graph[node].length; i++) {
             if (graph[node][i].value != -1 && !visited[i]) {
