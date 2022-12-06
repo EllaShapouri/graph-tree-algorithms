@@ -25,7 +25,6 @@ export const a = function (graph, start, goal,heuristic) {
         visited[node] = true;
         visitedNodesOneStep.push(node);
         // if (graph[node][lastNode].value !== -1)
-
         if (node === goal) {
             visitedNodesAllSteps.push([...visitedNodesOneStep]);
             visitedNodesOneStep = [];
@@ -56,4 +55,5 @@ export const a = function (graph, start, goal,heuristic) {
         visitedEdgesAllSteps.push([...visitedEdgesOneStep]);
         visitedEdgesOneStep = [];
     }
+    return { resultQueue, visitedNodesAllSteps, visitedEdgesAllSteps };
 };

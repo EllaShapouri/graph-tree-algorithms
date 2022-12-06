@@ -14,7 +14,7 @@ var visitedEdgesOneStep = [];
 
 var depth = 0;
 
-export const dls = (graph, start, limit) => {
+export const dls = (graph, start,goal, limit) => {
     graphFlow = [...graph];
     stack.push(start);
     resultQueue.push([...stack]);
@@ -25,6 +25,12 @@ export const dls = (graph, start, limit) => {
         visitedEdgesOneStep = [];
         visitedNodesOneStep = [];
         visitedNodesOneStep.push(curNode);
+        if (curNode === goal) {
+            visitedEdgesAllSteps.push([...visitedEdgesOneStep]);
+            visitedNodesAllSteps.push([...visitedNodesOneStep]);
+            resultQueue.push([...stack]);
+            return { resultQueue, visitedNodesAllSteps, visitedEdgesAllSteps };
+        }
         let adjacentNode = getFirstUnvistedNode(curNode, limit);
         if (adjacentNode !== false) {
             stack.push(adjacentNode);

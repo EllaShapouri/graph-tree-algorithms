@@ -1,9 +1,19 @@
 import styled from "styled-components";
 
+export const ModalWrapperHeuristic = styled.div`
+    & > div:first-child {
+        margin: 0 !important;
+        h3 {
+            text-align: start;
+        }
+    }
+    form {
+        margin-top: 2em;
+    }
+`;
 export const InputsWrapper = styled.div`
     overflow-y: scroll;
     max-height: 35vh;
-    margin-top: 1.5em;
 `;
 
 export const InputWrapper = styled.div`
@@ -20,5 +30,18 @@ export const InputWrapper = styled.div`
     }
     h3 {
         margin-bottom: 0;
+    }
+`;
+
+export const ButtonWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    margin: ${({ margin }) => margin};
+    button {
+        padding: 0.7em 1em;
+    }
+    & > div {
+        border-radius: 1em !important;
+        margin: 0.5em 0;
     }
 `;

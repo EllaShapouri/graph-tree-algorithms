@@ -25,13 +25,14 @@ const DnDFlow = () => {
     const changeElement = useSelector((state) => state.flow.changeElement);
     const algorithm = useSelector((state) => state.data.algorithm);
     const dataStructure = useSelector((state) => state.data.dataStructure);
-    const initialNode = useSelector((state) => state.data.initialNode);
+    const initialNodes = useSelector((state) => state.data.initialNodes);
+    const initialEdges = useSelector((state) => state.data.initialEdges);
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
 
-    const [nodes, setNodes, onNodesChange] = useNodesState(initialNode);
-    const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+    const [nodes, setNodes, onNodesChange] = useNodesState(JSON.parse(JSON.stringify(initialNodes)));
+    const [edges, setEdges, onEdgesChange] = useEdgesState(JSON.parse(JSON.stringify(initialEdges)));
     const [reactFlowInstance, setReactFlowInstance] = useState(null);
 
     const onNodeClick = (event, node) => {
